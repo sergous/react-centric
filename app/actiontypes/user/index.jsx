@@ -1,0 +1,11 @@
+export const CREATE_USER = 'user/CREATE_USER';
+export const ADD_USER = 'user/ADD_USER';
+export const EDIT_USER = 'user/EDIT_USER';
+export const OPEN_USER = 'user/OPEN_USER';
+export const EDIT_USER_PROP = 'user/EDIT_USER_PROP';
+export const CHANGE_USER = 'user/CHANGE_USER';
+export const CLOSE_USER = 'user/CLOSE_USER';
+export const UPDATE_USER = 'user/UPDATE_USER';
+export const UPDATE_OPEN_USER = 'user/UPDATE_OPEN_USER';
+export const REMOVE_USER = 'user/REMOVE_USER';
+export const SEARCH_USER = 'user/SEARCH_USER';

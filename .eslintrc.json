@@ -48,7 +48,7 @@
             "error",
             "last"
         ],
-        "complexity": "error",
+        "complexity": "off",
         "computed-property-spacing": [
             "error",
             "never"
@@ -186,7 +186,7 @@
         "no-template-curly-in-string": "error",
         "no-ternary": "off",
         "no-throw-literal": "off",
-        "no-trailing-spaces": "error",
+        "no-trailing-spaces": "warn",
         "no-undef-init": "error",
         "no-undefined": "warn",
         "no-undef": "warn",

@@ -13,6 +13,15 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Router, Route, Link, IndexRoute, useRouterHistory } from 'react-router';
 import { createHistory } from 'history'
+import { persistStore } from 'redux-persist';
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
+
+import configureStore from './store';
+
+const store = configureStore();
+// periodically persist the store
+persistStore(store);
 
 import Core from './components/Core/Core';
 import Bootstrap from './components/Bootstrap/Bootstrap';
@@ -53,100 +62,102 @@ const browserHistory = useRouterHistory(createHistory)({ basename: '/' })
 
 // Declare routes
 ReactDOM.render(
-    <Router history={browserHistory}>
-        <Route path="/" component={Core}>
+    <Provider store={store}>
+        <Router history={browserHistory}>
+            <Route path="/" component={Core}>
 
-            {/* Default route*/}
-            <IndexRoute component={Dashboard} />
+                {/* Default route*/}
+                <IndexRoute component={Dashboard} />
 
-            <Route path="dashboard" component={Dashboard} />
-            <Route path="cards" component={Cards} />
+                <Route path="dashboard" component={Dashboard} />
+                <Route path="cards" component={Cards} />
 
-            <Route path="charts">
-                <Route path="radial" component={Charts.Radial} />
-                <Route path="flot" component={Charts.Flot} />
-                <Route path="rickshaw" component={Charts.Rickshaw} />
+                <Route path="charts">
+                    <Route path="radial" component={Charts.Radial} />
+                    <Route path="flot" component={Charts.Flot} />
+                    <Route path="rickshaw" component={Charts.Rickshaw} />
+                </Route>
+
+                <Route path="elements">
+                    <Route path="bootstrap" component={Elements.Bootstrapui} />
+                    <Route path="buttons" component={Elements.Buttons} />
+                    <Route path="colors" component={Elements.Colors} />
+                    <Route path="elements" component={Elements.Elements} />
+                    <Route path="grid" component={Elements.Grid} />
+                    <Route path="gridmasonry" component={Elements.GridMasonry} />
+                    <Route path="icons" component={Elements.Icons} />
+                    <Route path="lists" component={Elements.Lists} />
+                    <Route path="nestable" component={Elements.Nestable} />
+                    <Route path="spinners" component={Elements.Spinners} />
+                    <Route path="sweetalert" component={Elements.Sweetalert} />
+                    <Route path="typography" component={Elements.Typography} />
+                    <Route path="utilities" component={Elements.Utilities} />
+                    <Route path="whiteframes" component={Elements.Whiteframes} />
+                </Route>
+
+                <Route path="tables">
+                    <Route path="tableclassic" component={Tables.TablesClassic} />
+                    <Route path="datatable" component={Tables.Datatable} />
+                    <Route path="bootgrid" component={Tables.Bootgrid} />
+                </Route>
+
+                <Route path="forms">
+                    <Route path="dropzone" component={Forms.Dropzone} />
+                    <Route path="editor" component={Forms.Editor} />
+                    <Route path="advanced" component={Forms.FormsAdvanced} />
+                    <Route path="classic" component={Forms.FormsClassic} />
+                    <Route path="material" component={Forms.Material} />
+                    <Route path="validation" component={Forms.Validation} />
+                    <Route path="wizard" component={Forms.Wizard} />
+                    <Route path="xeditable" component={Forms.XEditable} />
+                </Route>
+
+                <Route path="layouts">
+                    <Route path="boxed" component={Layouts.LayoutsBoxed} />
+                    <Route path="columns" component={Layouts.LayoutsColumns} />
+                    <Route path="containers" component={Layouts.LayoutsContainers} />
+                    <Route path="overlap" component={Layouts.LayoutsOverlap} />
+                    <Route path="tabs" component={Layouts.LayoutsTabs} />
+                </Route>
+
+                <Route path="maps">
+                    <Route path="google" component={Maps.GoogleMap} />
+                    <Route path="googlefull" component={Maps.GoogleMapFull} />
+                    <Route path="vector" component={Maps.VectorMap} />
+                    <Route path="datamaps" component={Maps.Datamaps} />
+                </Route>
+
+                <Route path="pages">
+                    <Route path="blog" component={Pages.Blog} />
+                    <Route path="blogarticle" component={Pages.BlogArticle} />
+                    <Route path="contacts" component={Pages.Contacts} />
+                    <Route path="faq" component={Pages.Faq} />
+                    <Route path="gallery" component={Pages.Gallery} />
+                    <Route path="invoice" component={Pages.Invoice} />
+                    <Route path="messages" component={Pages.Messages} />
+                    <Route path="pricing" component={Pages.Pricing} />
+                    <Route path="profile" component={Pages.Profile} />
+                    <Route path="projects" component={Pages.Projects} />
+                    <Route path="search" component={Pages.Search} />
+                    <Route path="timeline" component={Pages.Timeline} />
+                    <Route path="wall" component={Pages.Wall} />
+                </Route>
+
+                {/* Not found handler */}
+                {/*<Route path="*" component={NotFound}/>*/}
+
             </Route>
 
-            <Route path="elements">
-                <Route path="bootstrap" component={Elements.Bootstrapui} />
-                <Route path="buttons" component={Elements.Buttons} />
-                <Route path="colors" component={Elements.Colors} />
-                <Route path="elements" component={Elements.Elements} />
-                <Route path="grid" component={Elements.Grid} />
-                <Route path="gridmasonry" component={Elements.GridMasonry} />
-                <Route path="icons" component={Elements.Icons} />
-                <Route path="lists" component={Elements.Lists} />
-                <Route path="nestable" component={Elements.Nestable} />
-                <Route path="spinners" component={Elements.Spinners} />
-                <Route path="sweetalert" component={Elements.Sweetalert} />
-                <Route path="typography" component={Elements.Typography} />
-                <Route path="utilities" component={Elements.Utilities} />
-                <Route path="whiteframes" component={Elements.Whiteframes} />
+            {/* User Pages */}
+            <Route path="/" component={User.Layout}>
+                <Route path="login" component={User.Login}/>
+                <Route path="signup" component={User.Signup}/>
+                <Route path="recover" component={User.Recover}/>
+                <Route path="lock" component={User.Lock}/>
             </Route>
 
-            <Route path="tables">
-                <Route path="tableclassic" component={Tables.TablesClassic} />
-                <Route path="datatable" component={Tables.Datatable} />
-                <Route path="bootgrid" component={Tables.Bootgrid} />
-            </Route>
-
-            <Route path="forms">
-                <Route path="dropzone" component={Forms.Dropzone} />
-                <Route path="editor" component={Forms.Editor} />
-                <Route path="advanced" component={Forms.FormsAdvanced} />
-                <Route path="classic" component={Forms.FormsClassic} />
-                <Route path="material" component={Forms.Material} />
-                <Route path="validation" component={Forms.Validation} />
-                <Route path="wizard" component={Forms.Wizard} />
-                <Route path="xeditable" component={Forms.XEditable} />
-            </Route>
-
-            <Route path="layouts">
-                <Route path="boxed" component={Layouts.LayoutsBoxed} />
-                <Route path="columns" component={Layouts.LayoutsColumns} />
-                <Route path="containers" component={Layouts.LayoutsContainers} />
-                <Route path="overlap" component={Layouts.LayoutsOverlap} />
-                <Route path="tabs" component={Layouts.LayoutsTabs} />
-            </Route>
-
-            <Route path="maps">
-                <Route path="google" component={Maps.GoogleMap} />
-                <Route path="googlefull" component={Maps.GoogleMapFull} />
-                <Route path="vector" component={Maps.VectorMap} />
-                <Route path="datamaps" component={Maps.Datamaps} />
-            </Route>
-
-            <Route path="pages">
-                <Route path="blog" component={Pages.Blog} />
-                <Route path="blogarticle" component={Pages.BlogArticle} />
-                <Route path="contacts" component={Pages.Contacts} />
-                <Route path="faq" component={Pages.Faq} />
-                <Route path="gallery" component={Pages.Gallery} />
-                <Route path="invoice" component={Pages.Invoice} />
-                <Route path="messages" component={Pages.Messages} />
-                <Route path="pricing" component={Pages.Pricing} />
-                <Route path="profile" component={Pages.Profile} />
-                <Route path="projects" component={Pages.Projects} />
-                <Route path="search" component={Pages.Search} />
-                <Route path="timeline" component={Pages.Timeline} />
-                <Route path="wall" component={Pages.Wall} />
-            </Route>
-
-            {/* Not found handler */}
-            {/*<Route path="*" component={NotFound}/>*/}
-
-        </Route>
-
-        {/* User Pages */}
-        <Route path="/" component={User.Layout}>
-            <Route path="login" component={User.Login}/>
-            <Route path="signup" component={User.Signup}/>
-            <Route path="recover" component={User.Recover}/>
-            <Route path="lock" component={User.Lock}/>
-        </Route>
-
-    </Router>,
+        </Router>
+    </Provider>,
     document.getElementById('app')
 );
 
