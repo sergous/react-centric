@@ -2,8 +2,11 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Modal } from 'react-bootstrap';
 import pubsub from 'pubsub-js';
+import { connect } from 'react-redux';
+import { Field, reduxForm } from 'redux-form';
 
 import initSettings from './Settings.run';
+import {THEMES_CLASS_NAMES, MENU_LINK_CLASS_NAMES} from '../../constants/settings';
 import {initScreenfull} from '../Utils/Utils';
 import './Settings.scss';
 
@@ -57,6 +60,29 @@ class Settings extends React.Component {
     }
 
     render() {
+        const { theme, headerMenulink, sidebarShowheader,
+                sidebarShowtoolbar, sidebarOffCanvas } = this.props;
+        const themesList = THEMES_CLASS_NAMES.map( value => (
+                <div className="pull-left wd-tiny mb" key={value}>
+                    <div className="setting-color">
+                        <label className={`preview-${value}`}>
+                            <Field component="input"
+                                   type="radio"
+                                   checked={value === theme}
+                                   name="theme"
+                                   value={value} /><span className="ion-checkmark-round"></span>
+                            <div className="t-grid">
+                                <div className="t-row">
+                                    <div className="t-col preview-header"></div>
+                                    <div className="t-col preview-sidebar"></div>
+                                    <div className="t-col preview-content"></div>
+                                </div>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+            )
+        )
         return (
             <Modal show={this.state.showModal} bsSize="lg" onHide={this.close.bind(this)} className="modal modal-right fade modal-settings"
                 onEnter={this.onShowModal.bind(this)} onExited={this.onHiddenModal.bind(this)}>
@@ -65,164 +91,57 @@ class Settings extends React.Component {
                 </Modal.Header>
                 <Modal.Body>
                     <div className="clearfix mb">
-                        <div className="pull-left wd-tiny mb">
-                            <div className="setting-color">
-                                <label className="preview-theme-1">
-                                    <input type="radio" defaultChecked name="setting-theme" value="0" /><span className="ion-checkmark-round"></span>
-                                    <div className="t-grid">
-                                        <div className="t-row">
-                                            <div className="t-col preview-header"></div>
-                                            <div className="t-col preview-sidebar"></div>
-                                            <div className="t-col preview-content"></div>
-                                        </div>
-                                    </div>
-                                </label>
-                            </div>
-                        </div>
-                        <div className="pull-left wd-tiny mb">
-                            <div className="setting-color">
-                                <label className="preview-theme-2">
-                                    <input type="radio" name="setting-theme" value="1" /><span className="ion-checkmark-round"></span>
-                                    <div className="t-grid">
-                                        <div className="t-row">
-                                            <div className="t-col preview-header"></div>
-                                            <div className="t-col preview-sidebar"></div>
-                                            <div className="t-col preview-content"></div>
-                                        </div>
-                                    </div>
-                                </label>
-                            </div>
-                        </div>
-                        <div className="pull-left wd-tiny mb">
-                            <div className="setting-color">
-                                <label className="preview-theme-3">
-                                    <input type="radio" name="setting-theme" value="2" /><span className="ion-checkmark-round"></span>
-                                    <div className="t-grid">
-                                        <div className="t-row">
-                                            <div className="t-col preview-header"></div>
-                                            <div className="t-col preview-sidebar"></div>
-                                            <div className="t-col preview-content"></div>
-                                        </div>
-                                    </div>
-                                </label>
-                            </div>
-                        </div>
-                        <div className="pull-left wd-tiny mb">
-                            <div className="setting-color">
-                                <label className="preview-theme-4">
-                                    <input type="radio" name="setting-theme" value="3" /><span className="ion-checkmark-round"></span>
-                                    <div className="t-grid">
-                                        <div className="t-row">
-                                            <div className="t-col preview-header"></div>
-                                            <div className="t-col preview-sidebar"></div>
-                                            <div className="t-col preview-content"></div>
-                                        </div>
-                                    </div>
-                                </label>
-                            </div>
-                        </div>
-                        <div className="pull-left wd-tiny mb">
-                            <div className="setting-color">
-                                <label className="preview-theme-5">
-                                    <input type="radio" name="setting-theme" value="4" /><span className="ion-checkmark-round"></span>
-                                    <div className="t-grid">
-                                        <div className="t-row">
-                                            <div className="t-col preview-header"></div>
-                                            <div className="t-col preview-sidebar"></div>
-                                            <div className="t-col preview-content"></div>
-                                        </div>
-                                    </div>
-                                </label>
-                            </div>
-                        </div>
-                        <div className="pull-left wd-tiny mb">
-                            <div className="setting-color">
-                                <label className="preview-theme-6">
-                                    <input type="radio" name="setting-theme" value="5" /><span className="ion-checkmark-round"></span>
-                                    <div className="t-grid">
-                                        <div className="t-row">
-                                            <div className="t-col preview-header"></div>
-                                            <div className="t-col preview-sidebar"></div>
-                                            <div className="t-col preview-content"></div>
-                                        </div>
-                                    </div>
-                                </label>
-                            </div>
-                        </div>
-                        <div className="pull-left wd-tiny mb">
-                            <div className="setting-color">
-                                <label className="preview-theme-7">
-                                    <input type="radio" name="setting-theme" value="6" /><span className="ion-checkmark-round"></span>
-                                    <div className="t-grid">
-                                        <div className="t-row">
-                                            <div className="t-col preview-header"></div>
-                                            <div className="t-col preview-sidebar"></div>
-                                            <div className="t-col preview-content"></div>
-                                        </div>
-                                    </div>
-                                </label>
-                            </div>
-                        </div>
-                        <div className="pull-left wd-tiny mb">
-                            <div className="setting-color">
-                                <label className="preview-theme-8">
-                                    <input type="radio" name="setting-theme" value="7" /><span className="ion-checkmark-round"></span>
-                                    <div className="t-grid">
-                                        <div className="t-row">
-                                            <div className="t-col preview-header"></div>
-                                            <div className="t-col preview-sidebar"></div>
-                                            <div className="t-col preview-content"></div>
-                                        </div>
-                                    </div>
-                                </label>
-                            </div>
-                        </div>
-                        <div className="pull-left wd-tiny mb">
-                            <div className="setting-color">
-                                <label className="preview-theme-9">
-                                    <input type="radio" name="setting-theme" value="8" /><span className="ion-checkmark-round"></span>
-                                    <div className="t-grid">
-                                        <div className="t-row">
-                                            <div className="t-col preview-header"></div>
-                                            <div className="t-col preview-sidebar"></div>
-                                            <div className="t-col preview-content"></div>
-                                        </div>
-                                    </div>
-                                </label>
-                            </div>
-                        </div>
+                        { themesList }
                     </div>
                     <hr />
                     <p>
                         <label className="mda-checkbox">
-                            <input id="sidebar-showheader" type="checkbox" defaultChecked /><em className="bg-indigo-500"></em>Sidebar header
+                            <Field component="input" name="sidebarShowheader"
+                                   id="sidebar-showheader" type="checkbox"
+                                   checked={sidebarShowheader} />
+                                   <em className="bg-indigo-500"></em>Sidebar header
                         </label>
                     </p>
                     <p>
                         <label className="mda-checkbox">
-                            <input id="sidebar-showtoolbar" type="checkbox" defaultChecked /><em className="bg-indigo-500"></em>Sidebar toolbar
+                            <Field component="input" name="sidebarShowtoolbar"
+                                   id="sidebar-showtoolbar" type="checkbox"
+                                   checked={sidebarShowtoolbar} />
+                                   <em className="bg-indigo-500"></em>Sidebar toolbar
                         </label>
                     </p>
                     <p>
                         <label className="mda-checkbox">
-                            <input id="sidebar-offcanvas" type="checkbox" /><em className="bg-indigo-500"></em>Sidebar offcanvas
+                            <Field component="input" name="sidebarOffCanvas"
+                            id="sidebar-offcanvas" type="checkbox"
+                            checked={sidebarOffCanvas} />
+                            <em className="bg-indigo-500"></em>Sidebar offcanvas
                         </label>
                     </p>
                     <hr />
                     <p>Navigation icon</p>
                     <p>
                         <label className="mda-radio">
-                            <input type="radio" name="headerMenulink" value="menu-link-close" /><em className="bg-indigo-500"></em>Close icon
+                            <Field component="input" type="radio" name="headerMenulink"
+                            value={MENU_LINK_CLASS_NAMES.CLOSE}
+                            checked={headerMenulink === MENU_LINK_CLASS_NAMES.CLOSE} />
+                            <em className="bg-indigo-500"></em>Close icon
                         </label>
                     </p>
                     <p>
                         <label className="mda-radio">
-                            <input type="radio" name="headerMenulink" value="menu-link-slide" defaultChecked/><em className="bg-indigo-500"></em>Slide arrow
+                            <Field component="input" type="radio" name="headerMenulink"
+                            value={MENU_LINK_CLASS_NAMES.SLIDE}
+                            checked={headerMenulink === MENU_LINK_CLASS_NAMES.SLIDE} />
+                            <em className="bg-indigo-500"></em>Slide arrow
                         </label>
                     </p>
                     <p>
                         <label className="mda-radio">
-                            <input type="radio" name="headerMenulink" value="menu-link-arrow" /><em className="bg-indigo-500"></em>Big arrow
+                            <Field component="input" type="radio" name="headerMenulink"
+                            value={MENU_LINK_CLASS_NAMES.ARROW}
+                            checked={headerMenulink === MENU_LINK_CLASS_NAMES.ARROW} />
+                            <em className="bg-indigo-500"></em>Big arrow
                         </label>
                     </p>
                     <hr />
@@ -244,7 +163,16 @@ class Settings extends React.Component {
     }
 }
 
-export default Settings;
+const mapStateToProps = (state) => {
+    return {
+        initialValues: state.settings,
+        ...state.settings
+    }
+}
+
+const settingsForm = {form: 'settings'};
+
+export default connect(mapStateToProps)(reduxForm(settingsForm)(Settings));
 
 
 
