@@ -1,33 +1,6 @@
 import * as TYPES from '../actiontypes/user';
 import * as FORM_TYPES from 'redux-form/lib/actionTypes';
-
-const initialState = {
-    users: [
-        {
-            id: 1,
-            photo: 'img/user/01.jpg',
-            name: 'Sergey Smirnov',
-            position: 'Software Developer',
-            company: 'Company Inc.',
-            about: `Proin est sapien, convallis non hendrerit nec, laoreet ut ipsum. Sed pharetra euismod dolor, id feugiat ante volutpat eget.`
-        }
-    ],
-    userImages: [
-        {width: 900, height: 500, alt: "User 1", src: "img/user/01.jpg"},
-        {width: 900, height: 500, alt: "User 2", src: "img/user/02.jpg"},
-        {width: 900, height: 500, alt: "User 3", src: "img/user/03.jpg"},
-        {width: 900, height: 500, alt: "User 4", src: "img/user/04.jpg"},
-        {width: 900, height: 500, alt: "User 5", src: "img/user/05.jpg"},
-        {width: 900, height: 500, alt: "User 6", src: "img/user/06.jpg"},
-        {width: 900, height: 500, alt: "User 7", src: "img/user/07.jpg"},
-    ],
-    nextId: 3,
-    openUser: null,
-    editingUser: null,
-    editingProp: null,
-    isNew: false,
-    searchQuery: null
-};
+import { initialState } from '../constants/user';
 
 export default function User(state = initialState, action) {
     switch(action.type) {
@@ -153,17 +126,19 @@ export default function User(state = initialState, action) {
             });
             if (!index) return state;
 
-            let users = [];
             if (state.users.length > 1) {
-                users = [
-                    ...state.users.slice(0, index),
-                    ...state.users.slice(index + 1)
-                ]
+                return {
+                    ...state,
+                    users: [
+                        ...state.users.slice(0, index),
+                        ...state.users.slice(index + 1)
+                    ]
+                };
             }
 
             return {
                 ...state,
-                users
+                users: []
             };
         default:
             return state;
