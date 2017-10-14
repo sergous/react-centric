@@ -1,6 +1,7 @@
-export const userFilter = (query = '') => {
-    return (user) => {
-        const {name = ''} = user;
+export const userFilter = (query) => {
+    return ({name}) => {
+        if (!query) return true;
+        if (!name) return false;
         return name.toLowerCase().includes(query.toLowerCase());
     }
 }

@@ -1,18 +1,24 @@
 import * as FORM_TYPES from 'redux-form/lib/actionTypes';
 import { REHYDRATE } from 'redux-persist/lib/constants';
 import {triggerEvent as agent} from '../agents/triggerEvent';
-import {mapStateToActionType as map} from '../constants/settings';
+import {mapStateToActionType as settingsMap} from '../constants/settings';
+import {mapStateToActionType as profileMap} from '../constants/profile';
 
 export const triggerEventMiddleware = store => next => action => {
     switch(action.type) {
         case FORM_TYPES.CHANGE:
             if (action.meta.form  !== 'settings') break;
-            agent.body(map[action.meta.field], action.payload);
+            agent.body(settingsMap[action.meta.field], action.payload);
             break;
         case REHYDRATE:
             Object.keys(action.payload.settings).forEach( field => {
-                agent.body(map[field], action.payload.settings[field])
+                agent.body(settingsMap[field], action.payload.settings[field])
             });
+
+            if (!action.payload.profile || !action.payload.profile.profileUser) break;
+            const {editingProfile, profileUser} = action.payload.profile;
+            agent.body(profileMap.updateProfile, profileUser);
+            if (editingProfile) agent.body(profileMap.editProfile, editingProfile);
             break;
         default:
             break;

@@ -1,8 +1,14 @@
 import React from 'react';
 import pubsub from 'pubsub-js';
-import { Grid, Row, Col, Button, Dropdown, MenuItem } from 'react-bootstrap';
+import { Grid, Row, Col, Dropdown, MenuItem } from 'react-bootstrap';
+import { connect } from 'react-redux';
+import { Link } from 'react-router';
+import moment from 'moment';
 
-import ProfileRun from './Profile.run';
+import * as PROFILE_ACTIONS from '../../actions/profile';
+import profileRun from './Profile.run';
+import {bindActionCreators} from 'redux';
+import {FORMAT_FULL_DATE_XEDITABLE, FORMAT_FULL_DATE_MOMENT} from '../../constants/index';
 
 class Profile extends React.Component {
 
@@ -11,17 +17,35 @@ class Profile extends React.Component {
     }
 
     componentDidMount() {
-        ProfileRun();
+        profileRun(this.props.Actions);
     }
 
     render() {
+        const { contacts = [], profileUser } = this.props;
+        const contactsList = contacts.map( contact => (
+                <div className="mda-list-item" key={contact.id}>
+                    <img src={contact.photo} alt={contact.name} className="mda-list-item-img"/>
+                    <div className="mda-list-item-text mda-2-line">
+                        <h3><a href="#">{contact.name}</a></h3>
+                        <div className="text-muted text-ellipsis">{contact.position}</div>
+                    </div>
+                </div>
+            )
+        )
         return (
             <section>
                 <div className="container-overlap bg-blue-500">
                     <div className="media m0 pv">
-                        <div className="media-left"><a href="#"><img src="img/user/03.jpg" alt="User" className="media-object img-circle thumb64"/></a></div>
+                        <div className="media-left">
+                            <a href="#">
+                                <img src={profileUser.photo}
+                                     alt={profileUser.name}
+                                     className="media-object img-circle thumb64"/>
+                            </a>
+                        </div>
                         <div className="media-body media-middle">
-                            <h4 className="media-heading">Christine Matthews</h4><span className="text-muted">Sed eget lacus quis diam molestie mollis.</span>
+                            <h4 className="media-heading">{profileUser.name}</h4>
+                            <span className="text-muted">{profileUser.position}</span>
                         </div>
                     </div>
                 </div>
@@ -47,7 +71,7 @@ class Profile extends React.Component {
                                     About
                                 </h5>
                                 <div className="card-body">
-                                    <p data-type="textarea" className="is-editable text-inherit">Pellentesque porta tincidunt justo, non fringilla erat iaculis in. Sed nisi erat, ornare eu pellentesque quis, pellentesque non nulla. Proin rutrum, est pellentesque commodo mattis, sem justo porttitor odio, id aliquet lacus augue nec nisl.</p>
+                                    <p data-type="textarea" data-name="about" className="is-editable text-inherit">{profileUser.about}</p>
                                 </div>
                                 <div className="card-divider"></div>
                                 <div className="card-offset">
@@ -62,31 +86,49 @@ class Profile extends React.Component {
                                         <tbody>
                                             <tr>
                                                 <td><em className="ion-document-text icon-fw mr"></em>Area</td>
-                                                <td>Research &amp; development</td>
+                                                <td>
+                                                    <span className="is-editable text-inherit" data-name="area">
+                                                        {profileUser.area}
+                                                    </span>
+                                                </td>
                                             </tr>
                                             <tr>
                                                 <td><em className="ion-egg icon-fw mr"></em>Birthday</td>
-                                                <td><span data-type="date" data-mode="popup" className="is-editable text-inherit">10/11/2000</span></td>
+                                                <td><span data-type="date" data-format={FORMAT_FULL_DATE_XEDITABLE} data-mode="popup" data-name="birthday" className="is-editable text-inherit">
+                                                {moment(profileUser.birthday).format(FORMAT_FULL_DATE_MOMENT)}</span></td>
                                             </tr>
                                             <tr>
                                                 <td><em className="ion-ios-body icon-fw mr"></em>Member since</td>
-                                                <td><span data-type="date" data-mode="popup" className="is-editable text-inherit">05/11/2015</span></td>
+                                                <td><span data-type="date" data-mode="popup" data-format={FORMAT_FULL_DATE_XEDITABLE} data-name="registered" className="is-editable text-inherit">{moment(profileUser.registered).format(FORMAT_FULL_DATE_MOMENT)}</span></td>
                                             </tr>
                                             <tr>
                                                 <td><em className="ion-man icon-fw mr"></em>Gender</td>
-                                                <td><a id="gender" href="#" data-type="select" data-pk="1" data-value="2" data-title="Select sex" className="text-inherit"></a></td>
+                                                <td><a id="gender" href="#" data-type="select"
+                                                data-pk="0" data-value={profileUser.gender}
+                                                data-title="Select sex" data-name="gender"
+                                                className="text-inherit"></a></td>
                                             </tr>
                                             <tr>
                                                 <td><em className="ion-android-home icon-fw mr"></em>Address</td>
-                                                <td><span className="is-editable text-inherit">Some street, 123</span></td>
+                                                <td>
+                                                    <span className="is-editable text-inherit" data-name="address">
+                                                        {profileUser.address}
+                                                    </span>
+                                                </td>
                                             </tr>
                                             <tr>
                                                 <td><em className="ion-email icon-fw mr"></em>Email</td>
-                                                <td><span className="is-editable text-inherit"><a href="#">user@mail.com</a></span></td>
+                                                <td>
+                                                    <span className="is-editable text-inherit"
+                                                          data-type="email" data-name="email">
+                                                        {profileUser.email}
+                                                    </span>
+                                                </td>
                                             </tr>
                                             <tr>
                                                 <td><em className="ion-ios-telephone icon-fw mr"></em>Contact phone</td>
-                                                <td><span className="is-editable text-inherit">13-123-46578</span></td>
+                                                <td><span className="is-editable text-inherit"
+                                                          data-name="phone" data-type="tel">{profileUser.phone}</span></td>
                                             </tr>
                                         </tbody>
                                     </table>
@@ -145,32 +187,11 @@ class Profile extends React.Component {
                                     {/* END dropdown */}
                                 </h5>
                                 <div className="mda-list">
-                                    <div className="mda-list-item"><img src="img/user/01.jpg" alt="List user" className="mda-list-item-img"/>
-                                        <div className="mda-list-item-text mda-2-line">
-                                            <h3><a href="#">Eric Graves</a></h3>
-                                            <div className="text-muted text-ellipsis">Ut ac nisi id mauris</div>
-                                        </div>
-                                    </div>
-                                    <div className="mda-list-item"><img src="img/user/02.jpg" alt="List user" className="mda-list-item-img"/>
-                                        <div className="mda-list-item-text mda-2-line">
-                                            <h3><a href="#">Jessie Cox</a></h3>
-                                            <div className="text-muted text-ellipsis">Sed lacus nisl luctus</div>
-                                        </div>
-                                    </div>
-                                    <div className="mda-list-item"><img src="img/user/03.jpg" alt="List user" className="mda-list-item-img"/>
-                                        <div className="mda-list-item-text mda-2-line">
-                                            <h3><a href="#">Marie Hall</a></h3>
-                                            <div className="text-muted text-ellipsis">Donec congue sagittis mi</div>
-                                        </div>
-                                    </div>
-                                    <div className="mda-list-item"><img src="img/user/04.jpg" alt="List user" className="mda-list-item-img"/>
-                                        <div className="mda-list-item-text mda-2-line">
-                                            <h3><a href="#">Guy Carpenter</a></h3>
-                                            <div className="text-muted text-ellipsis">Donec convallis arcu sit</div>
-                                        </div>
-                                    </div>
+                                    {contactsList}
                                 </div>
-                                <div className="card-body pv0 text-right"><a href="#" className="btn btn-flat btn-info">View all</a></div>
+                                <div className="card-body pv0 text-right">
+                                    <Link to="pages/contacts" className="btn btn-flat btn-info">View all</Link>
+                                </div>
                                 <div className="card-divider"></div>
                                 <h5 className="card-heading">Activity</h5>
                                 <div className="card-body pb0">
@@ -232,4 +253,17 @@ class Profile extends React.Component {
     }
 }
 
-export default Profile;
+const mapStateToProps = state => {
+    return {
+        contacts: state.user.users,
+        profileUser: state.profile.profileUser
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        Actions: bindActionCreators(PROFILE_ACTIONS, dispatch)
+    };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Profile);
