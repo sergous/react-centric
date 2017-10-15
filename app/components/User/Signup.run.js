@@ -1,4 +1,4 @@
-function userSignup() {
+function userSignup(submitCallback) {
 
     var $form = $('#user-signup');
     $form.validate({
@@ -17,12 +17,20 @@ function userSignup() {
                 equalTo: '#account-password'
             }
         },
-        submitHandler: function( /*form*/ ) {
-            // form.submit();
-            console.log('Form submitted!');
-            $('#form-ok').hide().removeClass('hidden').show(500);
-        }
+        submitHandler: form => submitCallback(successSubmit)
     });
+}
+
+const successSubmit = () => {
+    // After success form.submit();
+    var $form = $('#user-signup');
+    $('#form-ok').hide().removeClass('hidden').show(500);
+    setTimeout(() => {
+        $form.hide();
+        $('#confirmation').hide().removeClass('hidden').show(500);
+    }, 1000);
+
+    console.log('Form submitted!');
 }
 
 
