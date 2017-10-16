@@ -11,11 +11,10 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Router, Route, Link, IndexRoute, useRouterHistory } from 'react-router';
-import { createHistory } from 'history'
+import { Router, Route, IndexRoute, browserHistory } from 'react-router';
+import { syncHistoryWithStore } from 'react-router-redux';
 import { persistStore } from 'redux-persist';
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
 
 import configureStore from './store';
 
@@ -58,12 +57,12 @@ $(() => {
 
 })
 
-const browserHistory = useRouterHistory(createHistory)({ basename: '/' })
+const history = syncHistoryWithStore(browserHistory, store);
 
 // Declare routes
 ReactDOM.render(
     <Provider store={store}>
-        <Router history={browserHistory}>
+        <Router history={history}>
             <Route path="/" component={Core}>
 
                 {/* Default route*/}
