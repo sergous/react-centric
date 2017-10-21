@@ -1,0 +1,11 @@
+export const CREATE_PROJECT = 'project/CREATE_PROJECT';
+export const ADD_PROJECT = 'project/ADD_PROJECT';
+export const EDIT_PROJECT = 'project/EDIT_PROJECT';
+export const OPEN_PROJECT = 'project/OPEN_PROJECT';
+export const EDIT_PROJECT_PROP = 'project/EDIT_PROJECT_PROP';
+export const CHANGE_PROJECT = 'project/CHANGE_PROJECT';
+export const CLOSE_PROJECT = 'project/CLOSE_PROJECT';
+export const UPDATE_PROJECT = 'project/UPDATE_PROJECT';
+export const UPDATE_OPEN_PROJECT = 'project/UPDATE_OPEN_PROJECT';
+export const REMOVE_PROJECT = 'project/REMOVE_PROJECT';
+export const SEARCH_PROJECT = 'project/SEARCH_PROJECT';
