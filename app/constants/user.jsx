@@ -1,5 +1,5 @@
 
-const users = [
+export const users = [
     {
         id: 1,
         photo: 'img/user/03.jpg',

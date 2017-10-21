@@ -1,10 +1,11 @@
 import {combineReducers} from 'redux';
 import { reducer as FormReducer } from 'redux-form';
+import { routerReducer } from 'react-router-redux';
 import UserReducer from './user';
 import ProfileReducer from './profile';
 import SettingsReducer from './settings';
 import AuthReducer from './auth';
-import { routerReducer } from 'react-router-redux';
+import ProjectReducer from './project';
 
 export default combineReducers({
     user: UserReducer,
@@ -12,5 +13,6 @@ export default combineReducers({
     settings: SettingsReducer,
     form: FormReducer,
     auth: AuthReducer,
-    routing: routerReducer
+    routing: routerReducer,
+    project: ProjectReducer,
 });
