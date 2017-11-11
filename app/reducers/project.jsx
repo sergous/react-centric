@@ -41,10 +41,14 @@ export default function Project(state = initialState, action) {
             };
         case FORM_TYPES.CHANGE:
             if (action.meta.form === 'projects') {
-                const searchQuery = action.meta.field === 'query' ? action.payload : null;
+                const searchQuery = action.meta.field === 'searchQuery' ? action.payload : null;
+                const filteredStatus = action.meta.field === 'filteredStatus' ? action.payload : null;
+                const sortBy = action.meta.field === 'sortBy' ? action.payload : null;
                 return {
                     ...state,
-                    searchQuery
+                    filteredStatus,
+                    searchQuery,
+                    sortBy
                 }
             }
             if (action.meta.form !== 'project') return state;
