@@ -6,8 +6,11 @@ import * as PROJECT_ACTIONS from '../../actions/project';
 import {ProjectCard} from './ProjectCard';
 import ProjectForm from './ProjectForm';
 import {connect} from 'react-redux';
-import {reduxForm} from 'redux-form';
+import {reduxForm, Field} from 'redux-form';
 import {bindActionCreators} from 'redux';
+import {propSort} from '../../sort';
+import {PROJECT_STATUS, PROJECT_SORT} from '../../constants/project';
+import {projectQueryFilter, projectStatusFilter} from '../../filters/project';
 
 class Projects extends React.Component {
 
@@ -17,8 +20,12 @@ class Projects extends React.Component {
 
     render() {
         const newProject = {};
-        const {projects, editingProject, openProject, isNew, Actions} = this.props;
-        const projectsCards = projects.map( project => (
+        const {projects, editingProject, openProject, isNew, Actions, searchQuery, filteredStatus, sortBy} = this.props;
+        const projectsCards = projects
+            .filter(projectQueryFilter(searchQuery))
+            .filter(projectStatusFilter(filteredStatus))
+            .sort(propSort(sortBy))
+            .map( project => (
                 <Col md={6} lg={4} key={project.id}>
                     <ProjectCard project={project}
                                  removeProject={Actions.removeProject}
@@ -27,6 +34,17 @@ class Projects extends React.Component {
                 </Col>
             )
         );
+        const statusFilterOptions = Object.keys(PROJECT_STATUS).map(key => (
+            <option value={PROJECT_STATUS[key]} key={key}>
+                {PROJECT_STATUS[key].replace(/^./, l => l.toUpperCase())}
+            </option>
+        ));
+
+        const sortByOptions = Object.keys(PROJECT_SORT).map(key => (
+            <option value={PROJECT_SORT[key]} key={key}>
+                {PROJECT_SORT[key].replace(/[A-Z]/, l => ` ${l}`).replace(/^./, l => l.toUpperCase())}
+            </option>
+        ));
 
         const addProjectModal = isNew
             ? (
@@ -114,6 +132,13 @@ class Projects extends React.Component {
             <section>
                 {projectModal}
                 <Grid fluid>
+                    <div className="mb-lg">
+                        <form role="form">
+                            <div className="mda-form-control">
+                                <Field name="searchQuery" component="input" type="text" placeholder="Search Project by Name, Status, Category, Description" className="form-control input-lg" />
+                            </div>
+                        </form>
+                    </div>
                     <Row className="mv">
                         <Col sm={4}>
                             <button type="button" className="btn btn-info"
@@ -125,24 +150,16 @@ class Projects extends React.Component {
                             <form className="form-inline">
                                 <div className="form-group mr">
                                     <label className="mr"><small>Status</small></label>
-                                    <select className="form-control input-sm">
-                                        <option>All</option>
-                                        <option>Active</option>
-                                        <option>Paused</option>
-                                        <option>Canceled</option>
-                                        <option>Completed</option>
-                                    </select>
+                                    <Field component="select" name="filteredStatus" className="form-control input-sm">
+                                        <option value="">All</option>
+                                        {statusFilterOptions}
+                                    </Field>
                                 </div>
                                 <div className="form-group">
                                     <label className="mr"><small>Sort by</small></label>
-                                    <select className="form-control input-sm">
-                                        <option>Created</option>
-                                        <option>Updated</option>
-                                        <option>Name</option>
-                                        <option>Status</option>
-                                        <option>Start Date</option>
-                                        <option>Finish Date</option>
-                                    </select>
+                                    <Field component="select" name="sortBy" className="form-control input-sm">
+                                        {sortByOptions}
+                                    </Field>
                                 </div>
                             </form>
                         </Col>
@@ -161,7 +178,10 @@ const mapStateToProps = state => {
         projects: state.project.projects,
         openProject: state.project.openProject,
         editingProject: state.project.editingProject,
-        isNew: state.project.isNew
+        isNew: state.project.isNew,
+        searchQuery: state.project.searchQuery,
+        filteredStatus: state.project.filteredStatus,
+        sortBy: state.project.sortBy,
     }
 }
 

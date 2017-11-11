@@ -7,6 +7,17 @@ export const PROJECT_STATUS = {
     COMPLETED   : 'completed',
 }
 
+export const PROJECT_SORT = {
+    NAME        : 'name',
+    CATEGORY    : 'category',
+    STATUS      : 'status',
+    PROGRESS    : 'progress',
+    START       : 'startDate',
+    FINISH      : 'finishDate',
+    CREATED     : 'createdDate',
+    UPDATED     : 'updatedDate',
+}
+
 export const PROGRESS_STYLE = {
     SUCCESS     : 'success',
     INFO        : 'info',
