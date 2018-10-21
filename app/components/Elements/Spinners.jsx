@@ -13,7 +13,7 @@ class Spinners extends React.Component {
         // markup is ready. Otherwise standard jQuery.ready won't work
 
         // Loaders.CSS
-        require('../../../bower_components/loaders.css/loaders.css.js');
+        require('loaders.css/loaders.css.js');
 
     }
 
