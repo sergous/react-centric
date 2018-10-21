@@ -3,7 +3,8 @@ var CopyWebpackPlugin = require('copy-webpack-plugin');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var path = require('path');
-var pkgBower = require('./package.json');
+
+var baseHref = process.env.REACT_BASE_HREF ? process.env.REACT_BASE_HREF : '/';
 
 module.exports = {
 
@@ -28,7 +29,7 @@ module.exports = {
             }, {
                 test: /\.jsx?$/,
                 exclude: /(node_modules|bower_components)/,
-                loaders: ['react-hot', 'babel?presets[]=es2015&presets[]=react']
+                loaders: ['react-hot']
             }, {
                 test: /\.jsx?$/,
                 exclude: /(node_modules|bower_components)/,
@@ -66,7 +67,7 @@ module.exports = {
         new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor[hash:6].js'),
         new HtmlWebpackPlugin({
             template: 'app/index.html',
-            baseUrl: process.env.NODE_ENV == 'development' ? '/' : '/'
+            baseUrl: baseHref
         }),
         new webpack.ResolverPlugin([
             // new webpack.ResolverPlugin.DirectoryDescriptionFilePlugin('package.json', ['main']),
@@ -91,6 +92,9 @@ module.exports = {
             'window.jQuery': 'jquery'
         }),
         // https://github.com/moment/moment/issues/2979#issuecomment-189899510
-        new webpack.ContextReplacementPlugin(/\.\/locale$/, 'empty-module', false, /js$/)
+        new webpack.ContextReplacementPlugin(/\.\/locale$/, 'empty-module', false, /js$/),
+        new webpack.DefinePlugin({
+            REACT_BASE_HREF: JSON.stringify(baseHref)
+        })
     ]
 };
