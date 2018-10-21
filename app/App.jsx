@@ -2,7 +2,7 @@
  *
  * Centric - Bootstrap Admin App + ReactJS
  *
- * Version: 1.7
+ * Version: 1.9.5
  * Author: @themicon_co
  * Website: http://themicon.co
  * License: https://wrapbootstrap.com/help/licenses
