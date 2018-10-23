@@ -15,22 +15,23 @@ Feel free to use it for learn, contribute and build your own system.
 
 _For more examples and usage, please refer to the [Wiki][wiki] and [<img src="https://d33wubrfki0l68.cloudfront.net/879d8e40573d7118cbc5d5e95544c2bce8fa5143/a5f17/images/2013/pivotal-tracker-fluid-icon-2013.png"  width="18" height="18" style="vertical-align: middle;padding:2px">PivotalTracker][pivotal-url]._
 
+
 ## Installation
 
-You need to have [Node.js][node-url] and [yarn][yarn-url] (recommended) pre-installed:
+You need to have [Node.js][node-url] and [yarn][yarn-url] (faster then npm) pre-installed. You can use npm if you do not have yarn.
 
-```sh
-yarn install
-yarn build
-```
-
-## Development setup
-
-You need to have Node.js and yarn (recommended) pre-installed:
+### Development setup
 
 ```sh
 yarn install
 yarn start
+```
+
+### Build setup
+
+```sh
+yarn install
+yarn build
 ```
 
 ## Release History
@@ -66,3 +67,7 @@ Kanban development board with current tasks on
 [wiki]: https://github.com/sergous/react-centric/wiki
 [pivotal-url]:
 https://www.pivotaltracker.com/n/projects/1582495
+[node-url]:
+https://nodejs.org
+[yarn-url]:
+https://yarnpkg.com
