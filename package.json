@@ -1,13 +1,13 @@
 {
-  "name": "react-centric-crm",
-  "version": "1.9.5",
+  "name": "react-centric",
+  "version": "0.0.2",
   "license": "ISC",
   "repository": {
     "type": "git",
-    "url": "https://sergous@bitbucket.org/sergous/react-centric-crm.git"
+    "url": "https://gitub.com/sergous/react-centric.git"
   },
-  "description": "Centric - Bootstrap Admin App + ReactJS",
-  "author": "@themicon_co",
+  "description": "React + Redux and Centric theme",
+  "author": "@sergo_us",
   "scripts": {
     "start": "webpack-dev-server --config webpack.dev.js --inline --progress --port 3000 --open",
     "clean": "rimraf dist/",
