@@ -1,0 +1,21 @@
+language: node_js
+node_js:
+  - "lts/*"
+cache: 
+  yarn: true
+  directories:
+    - node_modules # NPM packages
+before_install:
+  - export PATH="$HOME/.yarn/bin:$PATH"
+  - yarn global add rimraf webpack@1.13.3
+install: 
+  - yarn build
+  - echo react-centric.slctd.com > dist/CNAME
+deploy:
+  provider: pages
+  local-dir: dist
+  skip-cleanup: true
+  github-token: $GITHUB_TOKEN  # Set in the settings page of your repository, as a secure variable
+  keep-history: true
+  on:
+    branch: staging
