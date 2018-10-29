@@ -11,6 +11,9 @@ before_install:
 install: 
   - yarn build
   - echo react-centric.slctd.com > dist/CNAME
+branches:
+  only:
+  - staging
 deploy:
   provider: pages
   local-dir: dist
