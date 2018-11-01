@@ -1,9 +1,13 @@
 import React from 'react';
 import pubsub from 'pubsub-js';
 import { Grid, Row, Col, Dropdown, MenuItem } from 'react-bootstrap';
+import { connect } from 'react-redux';
+import * as PROJECT_ACTIONS from '../../actions/project';
 
 import DashboardRun from './Dashboard.run';
+import ProjectsWidget from './ProjectsWidget';
 import RippleRun from '../Ripple/Ripple.run';
+import { bindActionCreators } from 'redux';
 
 class Dashboard extends React.Component {
 
@@ -17,6 +21,7 @@ class Dashboard extends React.Component {
     }
 
     render() {
+        const { projects } = this.props;
         return (
             <section>
                 <div className="content-heading bg-white">
@@ -153,54 +158,7 @@ class Dashboard extends React.Component {
                                 </Col>
                                 <Col xs={12} lg={8}>
                                     <div className="card">
-                                        {/* START table-responsive */}
-                                        <div className="table-responsive">
-                                            <table className="table">
-                                                <thead>
-                                                    <tr>
-                                                        <th>#</th>
-                                                        <th>Project</th>
-                                                        <th>Completion</th>
-                                                        <th className="text-right">Trend</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <tr>
-                                                        <td className="va-middle"><span className="badge bg-pink-500">1</span></td>
-                                                        <td>
-                                                            <p className="m0">Vestibulum<br/><small className="text-thin">Nunc posuere eleifend lobortis.</small></p>
-                                                        </td>
-                                                        <td className="va-middle">50%</td>
-                                                        <td className="text-right va-middle"><em className="ion-arrow-graph-up-right text-success"></em></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td className="va-middle"><span className="badge bg-purple-400">2</span></td>
-                                                        <td>
-                                                            <p className="m0">Runfaster<br/><small className="text-thin">Nunc posuere eleifend lobortis.</small></p>
-                                                        </td>
-                                                        <td className="va-middle">30%</td>
-                                                        <td className="text-right va-middle"><em className="ion-arrow-graph-down-right text-warning"></em></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td className="va-middle"><span className="badge bg-indigo-500">3</span></td>
-                                                        <td>
-                                                            <p className="m0">Medic Healthcare<br/><small className="text-thin">Nunc posuere eleifend lobortis.</small></p>
-                                                        </td>
-                                                        <td className="va-middle">80%</td>
-                                                        <td className="text-right va-middle"><em className="ion-arrow-graph-up-right text-success"></em></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td className="va-middle"><span className="badge bg-info">4</span></td>
-                                                        <td>
-                                                            <p className="m0">Videotubeyou<br/><small className="text-thin">Nunc posuere eleifend lobortis.</small></p>
-                                                        </td>
-                                                        <td className="va-middle">50%</td>
-                                                        <td className="text-right va-middle"><em className="ion-arrow-graph-down-right text-warning"></em></td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                        {/* END table-responsive */}
+                                        <ProjectsWidget projects={projects} />
                                     </div>
                                 </Col>
                             </Row>
@@ -333,4 +291,16 @@ class Dashboard extends React.Component {
     }
 }
 
-export default Dashboard;
+const mapStateToProps = state => {
+    return {
+        projects: state.project.projects,
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        Actions: bindActionCreators(PROJECT_ACTIONS, dispatch)
+    };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);
