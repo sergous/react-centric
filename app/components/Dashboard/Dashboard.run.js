@@ -369,7 +369,14 @@ function initDashboard() {
             enabled: true
         }
     };
+    var pieOptionsProject = {
+        ...pieOptionsTask,
+        barColor: Colors.byName('pink-500'),
+        lineWidth: 3,
+        size: 30,
+    };
     $('#dashboard-easypiechartTask').easyPieChart(pieOptionsTask);
+    $('.dashboard-easypiechartProject').easyPieChart(pieOptionsProject);
 
 
     // Vector Map
