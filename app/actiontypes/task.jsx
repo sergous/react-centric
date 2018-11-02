@@ -1,0 +1,13 @@
+export const CREATE_TASK = 'task/CREATE_TASK';
+export const ADD_TASK = 'task/ADD_TASK';
+export const EDIT_TASK = 'task/EDIT_TASK';
+export const OPEN_TASK = 'task/OPEN_TASK';
+export const EDIT_TASK_PROP = 'task/EDIT_TASK_PROP';
+export const CHANGE_TASK = 'task/CHANGE_TASK';
+export const CLOSE_TASK = 'task/CLOSE_TASK';
+export const UPDATE_TASK = 'task/UPDATE_TASK';
+export const UPDATE_OPEN_TASK = 'task/UPDATE_OPEN_TASK';
+export const REMOVE_TASK = 'task/REMOVE_TASK';
+export const SEARCH_TASK = 'task/SEARCH_TASK';
+export const REORDER_TASKS = 'task/REORDER_TASKS';
+export const COLLAPSE_TASKS = 'task/COLLAPSE_TASKS';

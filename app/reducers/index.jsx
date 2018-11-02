@@ -6,6 +6,7 @@ import ProfileReducer from './profile';
 import SettingsReducer from './settings';
 import AuthReducer from './auth';
 import ProjectReducer from './project';
+import TaskReducer from './task';
 
 export default combineReducers({
     user: UserReducer,
@@ -15,4 +16,5 @@ export default combineReducers({
     auth: AuthReducer,
     routing: routerReducer,
     project: ProjectReducer,
+    task: TaskReducer,
 });
