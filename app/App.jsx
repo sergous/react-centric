@@ -86,7 +86,6 @@ ReactDOM.render(
                     <Route path="gridmasonry" component={Elements.GridMasonry} />
                     <Route path="icons" component={Elements.Icons} />
                     <Route path="lists" component={Elements.Lists} />
-                    <Route path="nestable" component={Elements.Nestable} />
                     <Route path="spinners" component={Elements.Spinners} />
                     <Route path="sweetalert" component={Elements.Sweetalert} />
                     <Route path="typography" component={Elements.Typography} />
@@ -137,6 +136,7 @@ ReactDOM.render(
                     <Route path="pricing" component={Pages.Pricing} />
                     <Route path="profile" component={Pages.Profile} />
                     <Route path="projects" component={Pages.Projects} />
+                    <Route path="tasks" component={Pages.Tasks} />
                     <Route path="search" component={Pages.Search} />
                     <Route path="timeline" component={Pages.Timeline} />
                     <Route path="wall" component={Pages.Wall} />
