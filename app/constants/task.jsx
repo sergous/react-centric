@@ -1,5 +1,10 @@
 const initialState = {
     isCollapsed: true,
+    nextId: 6,
+    openTask: null,
+    editingTask: null,
+    editingProp: null,
+    isNew: false,
     tasks: [
         { id: 1, name: 'Task 1', description: 'Very nice first task' },
         {
@@ -13,5 +18,5 @@ const initialState = {
             ],
         },
     ],
-};
-export { initialState };
+}
+export { initialState }

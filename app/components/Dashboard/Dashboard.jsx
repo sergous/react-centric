@@ -21,11 +21,29 @@ class Dashboard extends React.Component {
         RippleRun()
     }
 
+    handleOpenTask(task) {
+        const {
+            taskActions: { openTask, openTasks },
+        } = this.props
+
+        openTasks();
+        openTask(task);
+    }
+
+    handleAddTask() {
+        const {
+            taskActions: { createTask, openTasks },
+        } = this.props
+
+        openTasks();
+        createTask();
+    }
+
     render() {
         const {
             projects,
             tasks,
-            taskActions: { openTask },
+            taskActions: { openTasks },
         } = this.props
         return (
             <section>
@@ -616,11 +634,11 @@ class Dashboard extends React.Component {
                                 <div className="card-heading">
                                     <div className="card-title">
                                         <div className="pull-right">
-                                            <a href="">
+                                            <a className="clickable" onClick={() => this.handleAddTask()}>
                                                 <em className="ion-plus-round text-soft" />
                                             </a>
                                         </div>
-                                        Tasks
+                                        <div className="clickable" onClick={openTasks}>Tasks</div>
                                     </div>
                                 </div>
                                 <div className="card-body text-center pt0">
@@ -640,7 +658,7 @@ class Dashboard extends React.Component {
                                         <TasksWidgetItem
                                             task={task}
                                             key={task.id}
-                                            onOpen={openTask}
+                                            onOpen={(t) => this.handleOpenTask(t)}
                                         />
                                     ))}
                                 </div>

@@ -52,7 +52,14 @@ export const closeTask = () => {
     }
 }
 
-export const openTask = payload => {
+export const openTask = task => {
+    return {
+        type: TYPES.OPEN_TASK,
+        task,
+    }
+}
+
+export const openTasks = () => {
     return {
         type: LOCATION_CHANGE,
         payload: {
