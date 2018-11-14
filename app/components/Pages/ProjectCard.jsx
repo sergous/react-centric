@@ -18,7 +18,9 @@ export function ProjectCard(props) {
         <div className="card">
             <div className="card-heading">
                 <div className="pull-right">
-                    <Label bsStyle={labelStyle}>{status}</Label>
+                    <span className="clickable" onClick={() => openProject && openProject(project)}>
+                        <Label bsStyle={labelStyle}>{status}</Label>
+                    </span>
                     {/* START dropdown */}
                     <span>
                         <Dropdown pullRight id="dd20">
@@ -34,9 +36,9 @@ export function ProjectCard(props) {
                     </span>
                     {/* END dropdown */}
                 </div>
-                <div className="card-title">{name}</div><small>{category}</small>
+                <div className="card-title clickable" onClick={() => openProject && openProject(project)}>{name}</div><small>{category}</small>
             </div>
-            <div className="card-body" onClick={() => openProject && openProject(project)}>
+            <div className="card-body clickable" onClick={() => openProject && openProject(project)}>
                 {description
                     ? <section>
                         <p><strong>Description:</strong></p>
@@ -70,7 +72,7 @@ export function ProjectCard(props) {
                     </div>
                 </section> : null}
             </div>
-            {progress ? <div className="card-footer">
+            {progress ? <div className="card-footer clickable" onClick={() => openProject && openProject(project)}>
                 <p><small>{progress}%</small></p>
                 <ProgressBar now={progress} bsStyle={progressStyle} className="progress-xs m0"/>
             </div> : null}

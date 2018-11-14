@@ -2,14 +2,14 @@ import React from 'react';
 import { PROJECT_STATUS, mapStatusToStyle } from '../../constants/project';
 import {Label} from 'react-bootstrap';
 
-export default ({project}) => {
+export default ({project, onOpen}) => {
     const trendClass = project.status === PROJECT_STATUS.ACTIVE
         ? 'ion-arrow-graph-up-right text-success'
         : 'ion-arrow-graph-down-right text-warning';
     const labelStyle = mapStatusToStyle[project.status];
 
     return (
-        <tr>
+        <tr onClick={() => onOpen(project)} className="clickable">
             <td>
                 <p className="m0">{project.name}<br/><small className="text-thin">{project.description}</small></p>
             </td>

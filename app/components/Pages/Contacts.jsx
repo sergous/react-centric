@@ -52,7 +52,7 @@ class Contacts extends React.Component {
                         <ContactForm onChangeImage={this.handleChangeImage.bind(this)} />
                     </Modal.Body>
                     <Modal.Footer>
-                        <Button onClick={() => Actions.closeUser()}>Chancel</Button>
+                        <Button onClick={() => Actions.closeUser()}>Cancel</Button>
                         <Button className="btn btn-primary"
                                 onClick={() => Actions.addUser(editingContact)}>Save</Button>
                     </Modal.Footer>
@@ -71,7 +71,7 @@ class Contacts extends React.Component {
                         <ContactForm initialValues={editingContact} onChangeImage={this.handleChangeImage.bind(this)} />
                     </Modal.Body>
                     <Modal.Footer>
-                        <Button onClick={() => Actions.editUser(null)}>Chancel</Button>
+                        <Button onClick={() => Actions.editUser(null)}>Cancel</Button>
                         <Button className="btn btn-primary"
                                 onClick={() => Actions.updateUser(editingContact.id, editingContact)}>Save</Button>
                     </Modal.Footer>

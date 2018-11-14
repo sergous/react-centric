@@ -59,7 +59,7 @@ class Projects extends React.Component {
                                      editProjectProp={Actions.editProjectProp} />
                     </Modal.Body>
                     <Modal.Footer>
-                        <Button onClick={() => Actions.closeProject()}>Chancel</Button>
+                        <Button onClick={() => Actions.closeProject()}>Cancel</Button>
                         <Button className="btn btn-primary"
                                 onClick={() => Actions.addProject(editingProject)}>Save</Button>
                     </Modal.Footer>
@@ -79,7 +79,7 @@ class Projects extends React.Component {
                                      editProjectProp={Actions.editProjectProp} />
                     </Modal.Body>
                     <Modal.Footer>
-                        <Button onClick={() => Actions.editProject(null)}>Chancel</Button>
+                        <Button onClick={() => Actions.editProject(null)}>Cancel</Button>
                         <Button className="btn btn-primary"
                                 onClick={() => Actions.updateProject(editingProject.id, editingProject)}>Save</Button>
                     </Modal.Footer>

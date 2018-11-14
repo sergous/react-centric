@@ -3,7 +3,7 @@ export const PROJECT_STATUS = {
     ACTIVE      : 'active',
     PAUSED      : 'paused',
     DELAYED     : 'delayed',
-    CHANCELED   : 'chanceled',
+    CANCELED   : 'canceled',
     COMPLETED   : 'completed',
 }
 
@@ -29,7 +29,7 @@ export const mapStatusToStyle = {
     [PROJECT_STATUS.ACTIVE]     : PROGRESS_STYLE.INFO,
     [PROJECT_STATUS.PAUSED]     : PROGRESS_STYLE.WARNING,
     [PROJECT_STATUS.DELAYED]    : PROGRESS_STYLE.DANGER,
-    [PROJECT_STATUS.CHANCELED]  : PROGRESS_STYLE.INFO,
+    [PROJECT_STATUS.CANCELED]  : PROGRESS_STYLE.INFO,
     [PROJECT_STATUS.COMPLETED]  : PROGRESS_STYLE.SUCCESS,
 }
 
