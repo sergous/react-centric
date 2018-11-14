@@ -39,11 +39,30 @@ class Dashboard extends React.Component {
         createTask();
     }
 
+    handleOpenProject(project) {
+        const {
+            projectActions: { openProject, openProjects },
+        } = this.props
+
+        openProjects();
+        openProject(project);
+    }
+
+    handleAddProject() {
+        const {
+            projectActions: { createProject, openProjects },
+        } = this.props
+
+        openProjects();
+        createProject();
+    }
+
     render() {
         const {
             projects,
             tasks,
             taskActions: { openTasks },
+            projectActions: { openProjects },
         } = this.props
         return (
             <section>
@@ -308,7 +327,17 @@ class Dashboard extends React.Component {
                                 </Col>
                                 <Col xs={12} lg={8}>
                                     <div className="card">
-                                        <ProjectsWidget projects={projects} />
+                                        <div className="card-heading">
+                                            <div className="card-title">
+                                                <div className="pull-right">
+                                                    <a className="clickable" onClick={() => this.handleAddProject()}>
+                                                        <em className="ion-plus-round text-soft" />
+                                                    </a>
+                                                </div>
+                                                <div className="clickable" onClick={openProjects}>Projects</div>
+                                            </div>
+                                        </div>
+                                        <ProjectsWidget projects={projects} onOpen={(project) => this.handleOpenProject(project)} />
                                     </div>
                                 </Col>
                             </Row>

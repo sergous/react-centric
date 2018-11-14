@@ -25,7 +25,7 @@ class ContactAboutForm extends React.Component {
                 </div>
                 <div className="mda-form-group">
                     <Button bsStyle="default" className="mr mb-sm ripple"
-                            onClick={this.handleClose.bind(this)}>Chancel</Button>
+                            onClick={this.handleClose.bind(this)}>Cancel</Button>
                     <Button bsStyle="primary" className="mr mb-sm ripple"
                             type="submit">Save</Button>
                 </div>

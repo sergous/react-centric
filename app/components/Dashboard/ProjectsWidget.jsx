@@ -1,7 +1,7 @@
 import React from 'react';
 import ProjectsWidgetItem from './ProjectsWidgetItem'; 
 
-export default ({projects}) => {
+export default ({projects, onOpen}) => {
     return (
         <div className="table-responsive">
             <table className="table">
@@ -14,7 +14,7 @@ export default ({projects}) => {
                     </tr>
                 </thead>
                 <tbody>
-                    {projects.map(project => <ProjectsWidgetItem project={project} key={project.id} />)}
+                    {projects.map(project => <ProjectsWidgetItem project={project} key={project.id} onOpen={onOpen} />)}
                 </tbody>
             </table>
         </div>
