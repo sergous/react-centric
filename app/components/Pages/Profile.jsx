@@ -44,8 +44,8 @@ class Profile extends React.Component {
                             </a>
                         </div>
                         <div className="media-body media-middle">
-                            <h4 className="media-heading">{profileUser.name}</h4>
-                            <span className="text-muted">{profileUser.position}</span>
+                            <h4 className="media-heading is-editable text-inherit" data-name="name">{profileUser.name}</h4>
+                            <span className="text-muted is-editable text-inherit" data-name="position">{profileUser.position}</span>
                         </div>
                     </div>
                 </div>
