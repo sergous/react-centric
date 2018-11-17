@@ -31,7 +31,7 @@ class Profile extends React.Component {
         const { contacts = [], profileUser, userActions: {openUsers} } = this.props;
         const contactsList = contacts.map( contact => (
                 <div className="mda-list-item" key={contact.id}>
-                    <img src={contact.photo} alt={contact.name} className="mda-list-item-img"/>
+                    <img src={contact.photo || "img/icons/person-stalker.svg"} alt={contact.name} className="mda-list-item-img"/>
                     <div className="mda-list-item-text mda-2-line">
                         <h3><a onClick={() => this.handleOpenContact(contact)}>{contact.name}</a></h3>
                         <div className="text-muted text-ellipsis">{contact.position}</div>
