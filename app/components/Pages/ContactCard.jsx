@@ -15,7 +15,7 @@ function ContactCard(props) {
                     </ul>
                 </div>
                 {/* END dropdown */}
-                <div onClick={() => props.openUser(props.contact)}>
+                <div onClick={() => props.openUser(props.contact)} className="clickable">
                     <Row>
                         <Col lg={4} md={8}><a href=""><img src={props.contact.photo || "img/icons/person-stalker.svg"} alt={props.contact.name} className="fw img-responsive" /></a></Col>
                     </Row>
