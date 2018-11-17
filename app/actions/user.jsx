@@ -1,4 +1,5 @@
 import * as TYPES from '../actiontypes/user';
+import { LOCATION_CHANGE } from 'react-router-redux'
 
 export const createUser = user => {
     return {
@@ -55,6 +56,19 @@ export const openUser = (user) => {
     return {
         type: TYPES.OPEN_USER,
         user
+    }
+}
+
+export const openUsers = () => {
+    return {
+        type: LOCATION_CHANGE,
+        payload: {
+            action: 'PUSH',
+            pathname: '/pages/contacts',
+            query: {},
+            hash: '',
+            search: '',
+        },
     }
 }
 

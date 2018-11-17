@@ -6,6 +6,7 @@ import { Link } from 'react-router';
 import moment from 'moment';
 
 import * as PROFILE_ACTIONS from '../../actions/profile';
+import * as USER_ACTIONS from '../../actions/user';
 import profileRun from './Profile.run';
 import {bindActionCreators} from 'redux';
 import {FORMAT_FULL_DATE_XEDITABLE, FORMAT_FULL_DATE_MOMENT} from '../../constants/index';
@@ -17,16 +18,22 @@ class Profile extends React.Component {
     }
 
     componentDidMount() {
-        profileRun(this.props.Actions);
+        profileRun(this.props.profileActions);
+    }
+
+    handleOpenContact(contact) {
+        const {openUser, openUsers} = this.props.userActions;
+        openUsers();
+        openUser(contact);
     }
 
     render() {
-        const { contacts = [], profileUser } = this.props;
+        const { contacts = [], profileUser, userActions: {openUsers} } = this.props;
         const contactsList = contacts.map( contact => (
                 <div className="mda-list-item" key={contact.id}>
-                    <img src={contact.photo} alt={contact.name} className="mda-list-item-img"/>
+                    <img src={contact.photo || "img/icons/person-stalker.svg"} alt={contact.name} className="mda-list-item-img"/>
                     <div className="mda-list-item-text mda-2-line">
-                        <h3><a href="#">{contact.name}</a></h3>
+                        <h3><a onClick={() => this.handleOpenContact(contact)}>{contact.name}</a></h3>
                         <div className="text-muted text-ellipsis">{contact.position}</div>
                     </div>
                 </div>
@@ -44,8 +51,8 @@ class Profile extends React.Component {
                             </a>
                         </div>
                         <div className="media-body media-middle">
-                            <h4 className="media-heading">{profileUser.name}</h4>
-                            <span className="text-muted">{profileUser.position}</span>
+                            <h4 className="media-heading is-editable text-inherit" data-name="name">{profileUser.name}</h4>
+                            <span className="text-muted is-editable text-inherit" data-name="position">{profileUser.position}</span>
                         </div>
                     </div>
                 </div>
@@ -190,7 +197,7 @@ class Profile extends React.Component {
                                     {contactsList}
                                 </div>
                                 <div className="card-body pv0 text-right">
-                                    <Link to="pages/contacts" className="btn btn-flat btn-info">View all</Link>
+                                    <Link onClick={() => openUsers()} className="btn btn-flat btn-info">View all</Link>
                                 </div>
                                 <div className="card-divider"></div>
                                 <h5 className="card-heading">Activity</h5>
@@ -262,7 +269,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        Actions: bindActionCreators(PROFILE_ACTIONS, dispatch)
+        profileActions: bindActionCreators(PROFILE_ACTIONS, dispatch),
+        userActions: bindActionCreators(USER_ACTIONS, dispatch),
     };
 }
 

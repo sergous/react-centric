@@ -1,10 +1,12 @@
 import React from 'react'
 import { Link } from 'react-router'
+import { connect } from 'react-redux'
 
 import './Sidebar.scss'
 
 import SidebarRun from './Sidebar.run'
 import { initSvgReplace } from '../Utils/Utils'
+import { bindActionCreators } from 'redux';
 
 class Sidebar extends React.Component {
     constructor(props, context) {
@@ -26,6 +28,8 @@ class Sidebar extends React.Component {
     }
 
     render() {
+        const { name } = this.props.profile.profileUser;
+
         return (
             <aside className="sidebar-container">
                 <div className="sidebar-header">
@@ -52,7 +56,7 @@ class Sidebar extends React.Component {
                                 className="img-circle thumb64"
                             />
                         </a>
-                        <div className="mt">Welcome, Willie Webb</div>
+                        <div className="mt">Welcome, {name}</div>
                     </div>
                     <nav className="sidebar-nav">
                         <ul>
@@ -986,4 +990,12 @@ Sidebar.contextTypes = {
     router: React.PropTypes.object,
 }
 
-export default Sidebar
+const mapStateToProps = state => {
+    return {
+        profile: state.profile
+    }
+}
+
+export default connect(
+    mapStateToProps,
+)(Sidebar)
