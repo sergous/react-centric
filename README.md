@@ -1,9 +1,11 @@
 # React Centric
 > React + Redux with [Centric](https://wrapbootstrap.com/theme/centric-bootstrap-admin-template-WB0901P31) theme
 
-[![NPM Version][npm-image]][npm-url]
 [![Build Status][travis-image]][travis-url]
-[![Downloads Stats][npm-downloads]][npm-url]
+[![Dependency Status][david-image]][david-url]
+[![devDependency Status][david-image-dev]][david-url-dev]
+[![Open Source Love][os-image]][os-url]
+[![PRs Welcome][pr-image]][pr-url]
 
 Front-end platform for build several open source tools integration including collaboration, agile projects and online sales.
 
@@ -13,7 +15,7 @@ Front-end platform for build several open source tools integration including col
 
 Feel free to use it for learn, contribute and build your own system.
 
-_For more examples and usage, please refer to the [Wiki][wiki] and [<img src="https://d33wubrfki0l68.cloudfront.net/879d8e40573d7118cbc5d5e95544c2bce8fa5143/a5f17/images/2013/pivotal-tracker-fluid-icon-2013.png"  width="18" height="18" style="vertical-align: middle;padding:2px">PivotalTracker][pivotal-url]._
+_For more examples and usage, please refer to the [Wiki][wiki-url] and [<img src="https://d33wubrfki0l68.cloudfront.net/879d8e40573d7118cbc5d5e95544c2bce8fa5143/a5f17/images/2013/pivotal-tracker-fluid-icon-2013.png"  width="18" height="18" style="vertical-align: middle;padding:2px">PivotalTracker][pivotal-url]._
 
 
 ## Installation
@@ -50,7 +52,7 @@ Distributed under the ICS license. See ``LICENSE`` for more information.
 ## Contributing
 
 Kanban development board with current tasks on 
-[<img src="https://d33wubrfki0l68.cloudfront.net/879d8e40573d7118cbc5d5e95544c2bce8fa5143/a5f17/images/2013/pivotal-tracker-fluid-icon-2013.png"  width="18" height="18" style="vertical-align: middle;padding:2px">PivotalTracker][pivotal-url].
+[<img src="https://d33wubrfki0l68.cloudfront.net/879d8e40573d7118cbc5d5e95544c2bce8fa5143/a5f17/images/2013/pivotal-tracker-fluid-icon-2013.png"  width="18" height="18" style="vertical-align: middle;padding:2px"> PivotalTracker][pivotal-url].
 
 1. Fork it (<https://github.com/sergous/react-centric/fork>)
 2. Create your feature branch (`git checkout -b feature/fooBar`)
@@ -59,15 +61,18 @@ Kanban development board with current tasks on
 5. Create a new Pull Request
 
 <!-- Markdown link & img dfn's -->
-[npm-image]: https://img.shields.io/npm/v/datadog-metrics.svg?style=flat-square
-[npm-url]: https://npmjs.org/package/datadog-metrics
-[npm-downloads]: https://img.shields.io/npm/dm/datadog-metrics.svg?style=flat-square
-[travis-image]: https://img.shields.io/travis/dbader/node-datadog-metrics/master.svg?style=flat-square
-[travis-url]: https://travis-ci.org/dbader/node-datadog-metrics
-[wiki]: https://github.com/sergous/react-centric/wiki
-[pivotal-url]:
-https://www.pivotaltracker.com/n/projects/1582495
-[node-url]:
-https://nodejs.org
-[yarn-url]:
-https://yarnpkg.com
+[repo-url]: https://github.com/sergous/react-centric
+[wiki-url]: https://github.com/sergous/react-centric/wiki
+[travis-image]: https://travis-ci.com/sergous/react-centric.svg?branch=staging
+[travis-url]: https://travis-ci.com/sergous/react-centric
+[pivotal-url]: https://www.pivotaltracker.com/n/projects/1582495
+[os-image]: https://badges.frapsoft.com/os/v2/open-source.svg?v=103
+[os-url]: https://github.com/ellerbrock/open-source-badges
+[david-image]: https://david-dm.org/boennemann/badges.svg
+[david-url]: https://david-dm.org/sergous/react-centric
+[david-image-dev]: https://david-dm.org/boennemann/badges/dev-status.svg
+[david-url-dev]: https://david-dm.org/sergous/react-centric#info=devDependencies
+[pr-image]: https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square
+[pr-url]: http://makeapullrequest.com
+[node-url]: https://nodejs.org
+[yarn-url]: https://yarnpkg.com
