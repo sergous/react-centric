@@ -2,6 +2,7 @@
 > React + Redux with [Centric](https://wrapbootstrap.com/theme/centric-bootstrap-admin-template-WB0901P31) theme
 
 [![Build Status][travis-image]][travis-url]
+[![codecov.io][codecov-image]][codecov-url]
 [![Dependency Status][david-image]][david-url]
 [![devDependency Status][david-image-dev]][david-url-dev]
 [![Open Source Love][os-image]][os-url]
@@ -72,6 +73,8 @@ Kanban development board with current tasks on
 [david-url]: https://david-dm.org/sergous/react-centric
 [david-image-dev]: https://david-dm.org/boennemann/badges/dev-status.svg
 [david-url-dev]: https://david-dm.org/sergous/react-centric#info=devDependencies
+[codecov-image]: https://codecov.io/gh/sergous/react-centric/branch/staging/graph/badge.svg
+[codecov-url]: https://codecov.io/gh/sergous/react-centric
 [pr-image]: https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square
 [pr-url]: http://makeapullrequest.com
 [node-url]: https://nodejs.org

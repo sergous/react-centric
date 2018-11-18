@@ -16,6 +16,10 @@
         "install": "napa",
         "postinstall": "modernizr -c modernizr-config.json -d app/modernizr.js"
     },
+    "jest": {
+        "coverageDirectory": "./coverage/",
+        "collectCoverage": true
+    },
     "napa": {
         "flot": "flot/flot#v0.8.3",
         "jquery.flot.spline": "miloszfalinski/jquery.flot.spline",
