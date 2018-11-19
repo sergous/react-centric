@@ -93,6 +93,7 @@
         "redux-form": "^7.0.4",
         "redux-logger": "^3.0.6",
         "redux-persist": "^4.9.1",
+        "redux-thunk": "^2.3.0",
         "rickshaw": "1.6.0",
         "screenfull": "3.0.2",
         "select2": "4.0.3",
