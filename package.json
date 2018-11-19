@@ -13,6 +13,7 @@
         "clean": "rimraf dist/",
         "build": "npm run clean && webpack --config webpack.prod.js --progress --profile --bail",
         "test": "jest",
+        "coveralls": "jest --coverage --coverageReporters=text-lcov | coveralls",
         "install": "napa",
         "postinstall": "modernizr -c modernizr-config.json -d app/modernizr.js"
     },
