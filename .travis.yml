@@ -7,10 +7,10 @@ cache:
     - node_modules # NPM packages
 before_install:
   - export PATH="$HOME/.yarn/bin:$PATH"
-  - yarn global add rimraf webpack@1.13.3 jest
+  - yarn global add rimraf webpack@1.13.3 jest codecov
 install: 
   - yarn install
-  - yarn test
+  - yarn test && codecov
   - yarn build
   - echo react-centric.slctd.com > dist/CNAME
 branches:
