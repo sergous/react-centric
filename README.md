@@ -3,6 +3,7 @@
 
 [![Build Status][travis-image]][travis-url]
 [![codecov.io][codecov-image]][codecov-url]
+[![Coverage Status][coveralls-image]][coveralls-url]
 [![Dependency Status][david-image]][david-url]
 [![devDependency Status][david-image-dev]][david-url-dev]
 [![Open Source Love][os-image]][os-url]
@@ -75,6 +76,8 @@ Kanban development board with current tasks on
 [david-url-dev]: https://david-dm.org/sergous/react-centric#info=devDependencies
 [codecov-image]: https://codecov.io/gh/sergous/react-centric/branch/staging/graph/badge.svg
 [codecov-url]: https://codecov.io/gh/sergous/react-centric
+[coveralls-image]: https://coveralls.io/repos/github/sergous/react-centric/badge.svg?branch=staging
+[coveralls-url]: https://coveralls.io/github/sergous/react-centric?branch=staging
 [pr-image]: https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square
 [pr-url]: http://makeapullrequest.com
 [node-url]: https://nodejs.org
