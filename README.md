@@ -70,10 +70,10 @@ Kanban development board with current tasks on
 [pivotal-url]: https://www.pivotaltracker.com/n/projects/1582495
 [os-image]: https://badges.frapsoft.com/os/v2/open-source.svg?v=103
 [os-url]: https://github.com/ellerbrock/open-source-badges
-[david-image]: https://david-dm.org/boennemann/badges.svg
+[david-image]: https://david-dm.org/sergous/react-centric/status.svg
 [david-url]: https://david-dm.org/sergous/react-centric
-[david-image-dev]: https://david-dm.org/boennemann/badges/dev-status.svg
-[david-url-dev]: https://david-dm.org/sergous/react-centric#info=devDependencies
+[david-image-dev]: https://david-dm.org/sergous/react-centric/dev-status.svg
+[david-url-dev]: https://david-dm.org/sergous/react-centric?type=dev
 [codecov-image]: https://codecov.io/gh/sergous/react-centric/branch/staging/graph/badge.svg
 [codecov-url]: https://codecov.io/gh/sergous/react-centric
 [coveralls-image]: https://coveralls.io/repos/github/sergous/react-centric/badge.svg?branch=staging
