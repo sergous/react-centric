@@ -1,4 +1,4 @@
-import { LOCATION_CHANGE } from 'react-router-redux'
+import { LOCATION_CHANGE } from '../actiontypes'
 
 export default function ui(state = {}, action) {
     switch(action.type) {
