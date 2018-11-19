@@ -6,7 +6,17 @@ import './Sidebar.scss'
 
 import SidebarRun from './Sidebar.run'
 import { initSvgReplace } from '../Utils/Utils'
-import { bindActionCreators } from 'redux';
+import {
+    CONTACTS_PATH,
+    PROJECTS_PATH,
+    TASKS_PATH,
+    PROFILE_PATH,
+    DASHBOARD_PATH,
+    LOGIN_PATH,
+    REGISTER_PATH,
+    LOCK_PATH,
+    RECOVER_PATH,
+} from '../../constants/routes'
 
 class Sidebar extends React.Component {
     constructor(props, context) {
@@ -28,7 +38,7 @@ class Sidebar extends React.Component {
     }
 
     render() {
-        const { name } = this.props.profile.profileUser;
+        const { name } = this.props.profile.profileUser
 
         return (
             <aside className="sidebar-container">
@@ -67,7 +77,7 @@ class Sidebar extends React.Component {
                                         : ''
                                 }
                             >
-                                <Link to="dashboard" className="ripple">
+                                <Link to={DASHBOARD_PATH} className="ripple">
                                     <span className="pull-right nav-label">
                                         <span className="badge bg-success">
                                             2
@@ -726,15 +736,15 @@ class Sidebar extends React.Component {
                                 className={this.routeActive([
                                     'pages/blog',
                                     'pages/blogarticle',
-                                    'pages/contacts',
+                                    CONTACTS_PATH,
                                     'pages/faq',
                                     'pages/gallery',
                                     'pages/invoice',
                                     'pages/messages',
                                     'pages/pricing',
-                                    'pages/profile',
-                                    'pages/projects',
-                                    'pages/tasks',
+                                    PROFILE_PATH,
+                                    PROJECTS_PATH,
+                                    TASKS_PATH,
                                     'pages/search',
                                     'pages/timeline',
                                     'pages/wall',
@@ -795,11 +805,11 @@ class Sidebar extends React.Component {
                                     </li>
                                     <li
                                         className={this.routeActive(
-                                            'pages/contacts',
+                                            CONTACTS_PATH,
                                         )}
                                     >
                                         <Link
-                                            to="pages/contacts"
+                                            to={CONTACTS_PATH}
                                             className="ripple"
                                         >
                                             <span className="pull-right nav-label" />
@@ -818,11 +828,11 @@ class Sidebar extends React.Component {
                                     </li>
                                     <li
                                         className={this.routeActive(
-                                            'pages/projects',
+                                            PROJECTS_PATH,
                                         )}
                                     >
                                         <Link
-                                            to="pages/projects"
+                                            to={PROJECTS_PATH}
                                             className="ripple"
                                         >
                                             <span className="pull-right nav-label" />
@@ -830,12 +840,10 @@ class Sidebar extends React.Component {
                                         </Link>
                                     </li>
                                     <li
-                                        className={this.routeActive(
-                                            'pages/tasks',
-                                        )}
+                                        className={this.routeActive(TASKS_PATH)}
                                     >
                                         <Link
-                                            to="pages/tasks"
+                                            to={TASKS_PATH}
                                             className="ripple"
                                         >
                                             <span className="pull-right nav-label" />
@@ -870,11 +878,11 @@ class Sidebar extends React.Component {
                                     </li>
                                     <li
                                         className={this.routeActive(
-                                            'pages/profile',
+                                            PROFILE_PATH,
                                         )}
                                     >
                                         <Link
-                                            to="pages/profile"
+                                            to={PROFILE_PATH}
                                             className="ripple"
                                         >
                                             <span className="pull-right nav-label" />
@@ -953,25 +961,34 @@ class Sidebar extends React.Component {
                                 </a>
                                 <ul id="user" className="sidebar-subnav">
                                     <li>
-                                        <Link to="login" className="ripple">
+                                        <Link
+                                            to={LOGIN_PATH}
+                                            className="ripple"
+                                        >
                                             <span className="pull-right nav-label" />
                                             <span>Login</span>
                                         </Link>
                                     </li>
                                     <li>
-                                        <Link to="signup" className="ripple">
+                                        <Link
+                                            to={REGISTER_PATH}
+                                            className="ripple"
+                                        >
                                             <span className="pull-right nav-label" />
                                             <span>Signup</span>
                                         </Link>
                                     </li>
                                     <li>
-                                        <Link to="lock" className="ripple">
+                                        <Link to={LOCK_PATH} className="ripple">
                                             <span className="pull-right nav-label" />
                                             <span>Lock</span>
                                         </Link>
                                     </li>
                                     <li>
-                                        <Link to="recover" className="ripple">
+                                        <Link
+                                            to={RECOVER_PATH}
+                                            className="ripple"
+                                        >
                                             <span className="pull-right nav-label" />
                                             <span>Recover</span>
                                         </Link>
@@ -992,10 +1009,8 @@ Sidebar.contextTypes = {
 
 const mapStateToProps = state => {
     return {
-        profile: state.profile
+        profile: state.profile,
     }
 }
 
-export default connect(
-    mapStateToProps,
-)(Sidebar)
+export default connect(mapStateToProps)(Sidebar)

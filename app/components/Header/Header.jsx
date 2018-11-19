@@ -5,6 +5,7 @@ import { LinkContainer } from 'react-router-bootstrap';
 
 import './Header.scss';
 import './HeaderMenuLinks.scss';
+import { PROFILE_PATH } from '../../constants/routes';
 
 class Header extends React.Component {
 
@@ -61,7 +62,7 @@ class Header extends React.Component {
                               <sup className="badge bg-danger">3</sup>
                             </Dropdown.Toggle>
                             <Dropdown.Menu className="md-dropdown-menu" >
-                                <LinkContainer to="pages/profile">
+                                <LinkContainer to={PROFILE_PATH}>
                                     <MenuItem eventKey={3.1}>
                                         <em className="ion-home icon-fw"></em>
                                         Profile

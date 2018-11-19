@@ -6,6 +6,7 @@ import signupRun from './Signup.run';
 import {Field, reduxForm, Form} from 'redux-form';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
+import { DASHBOARD_PATH, LOGIN_PATH } from '../../constants/routes';
 
 class Signup extends React.Component {
 
@@ -30,7 +31,7 @@ class Signup extends React.Component {
                         <p>Please check your inbox and follow instructions to confirm your email.</p>
                     </div>
                     <div className="card-footer text-right">
-                        <Link to="dashboard" className="btn btn-success btn-flat text-white">
+                        <Link to={DASHBOARD_PATH} className="btn btn-success btn-flat text-white">
                             Enter
                             <em className="ion-ios-arrow-thin-right icon-fw"></em>
                         </Link>
@@ -42,7 +43,7 @@ class Signup extends React.Component {
                       <OverlayTrigger
                         overlay={tooltip} placement="top"
                         delayShow={300} delayHide={150}>
-                      <Link to="login" className="btn-raised btn btn-info btn-circle btn-lg">
+                      <Link to={LOGIN_PATH} className="btn-raised btn btn-info btn-circle btn-lg">
                         <em className="ion-arrow-left-a"></em>
                       </Link>
                       </OverlayTrigger>;

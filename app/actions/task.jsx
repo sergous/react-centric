@@ -1,5 +1,6 @@
 import * as TYPES from '../actiontypes/task'
-import { LOCATION_CHANGE } from 'react-router-redux'
+import { locationChange } from './ui';
+import { TASKS_PATH } from '../constants/routes';
 
 export const createTask = task => {
     return {
@@ -59,18 +60,7 @@ export const openTask = task => {
     }
 }
 
-export const openTasks = () => {
-    return {
-        type: LOCATION_CHANGE,
-        payload: {
-            action: 'PUSH',
-            pathname: '/pages/tasks',
-            query: {},
-            hash: '',
-            search: '',
-        },
-    }
-}
+export const openTasks = () => dispatch => dispatch(locationChange({pathname: TASKS_PATH}))
 
 export const changeTask = (field, payload) => {
     return {

@@ -7,6 +7,7 @@ import * as AUTH_ACTIONS from '../../actions/auth.jsx'
 import loginRun from './Login.run';
 import {bindActionCreators} from 'redux';
 import {Tooltip, OverlayTrigger} from 'react-bootstrap';
+import { REGISTER_PATH, RECOVER_PATH } from '../../constants/routes.jsx';
 
 class Login extends React.Component {
 
@@ -33,7 +34,7 @@ class Login extends React.Component {
                                 <OverlayTrigger
                                         overlay={tooltip} placement="top"
                                         delayShow={300} delayHide={150}>
-                                    <Link to="signup" className="btn-raised btn btn-info btn-circle btn-lg">
+                                    <Link to={REGISTER_PATH} className="btn-raised btn btn-info btn-circle btn-lg">
                                         <em className="ion-person-add"></em>
                                     </Link>
                                 </OverlayTrigger>
@@ -64,7 +65,7 @@ class Login extends React.Component {
                         <button type="submit" className="btn btn-primary btn-flat">Authenticate</button>
                     </Form>
                     <div className="text-center text-sm">
-                        <Link to="recover" className="text-inherit">Forgot password?</Link>
+                        <Link to={RECOVER_PATH} className="text-inherit">Forgot password?</Link>
                     </div>
                 </div>
             </div>
