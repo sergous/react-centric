@@ -1,3 +1,5 @@
+import { DASHBOARD_PATH } from '../../constants/routes';
+
 function userLock() {
 
     var $form = $('#user-lock');
@@ -15,7 +17,7 @@ function userLock() {
             console.log('Form submitted!');
             // move to dashboard
             // window.location.href = 'dashboard.html';
-            Router.go('dashboard');
+            Router.go(DASHBOARD_PATH);
         }
     });
 }

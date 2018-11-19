@@ -7,6 +7,7 @@ import {connect} from 'react-redux';
 import recoverRun from './Recover.run';
 import * as AUTH_ACTIONS from '../../actions/auth';
 import {Tooltip, OverlayTrigger} from 'react-bootstrap';
+import { LOGIN_PATH } from '../../constants/routes';
 
 class Recover extends React.Component {
 
@@ -30,7 +31,7 @@ class Recover extends React.Component {
                             <p>Please check your inbox and follow instructions to reset your password.</p>
                         </div>
                         <div className="card-footer text-right">
-                            <Link to="login" className="btn btn-success btn-flat text-white">
+                            <Link to={LOGIN_PATH} className="btn btn-success btn-flat text-white">
                                 Login
                                 <em className="ion-ios-arrow-thin-right icon-fw"></em>
                             </Link>
@@ -42,7 +43,7 @@ class Recover extends React.Component {
                                 <OverlayTrigger
                                         overlay={tooltip} placement="top"
                                         delayShow={300} delayHide={150}>
-                                    <Link to="login" className="btn-raised btn btn-info btn-circle btn-lg">
+                                    <Link to={LOGIN_PATH} className="btn-raised btn btn-info btn-circle btn-lg">
                                         <em className="ion-arrow-left-a"></em>
                                     </Link>
                                 </OverlayTrigger>

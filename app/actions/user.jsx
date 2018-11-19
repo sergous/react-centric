@@ -1,5 +1,6 @@
 import * as TYPES from '../actiontypes/user';
-import { LOCATION_CHANGE } from 'react-router-redux'
+import { locationChange } from './ui';
+import { CONTACTS_PATH } from '../constants/routes';
 
 export const createUser = user => {
     return {
@@ -59,18 +60,7 @@ export const openUser = (user) => {
     }
 }
 
-export const openUsers = () => {
-    return {
-        type: LOCATION_CHANGE,
-        payload: {
-            action: 'PUSH',
-            pathname: '/pages/contacts',
-            query: {},
-            hash: '',
-            search: '',
-        },
-    }
-}
+export const openUsers = () => dispatch => dispatch(locationChange({pathname: CONTACTS_PATH}))
 
 export const changeUser = (field, payload) => {
     return {

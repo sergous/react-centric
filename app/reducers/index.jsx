@@ -7,6 +7,7 @@ import SettingsReducer from './settings';
 import AuthReducer from './auth';
 import ProjectReducer from './project';
 import TaskReducer from './task';
+import UiReducer from './ui';
 
 export default combineReducers({
     user: UserReducer,
@@ -17,4 +18,5 @@ export default combineReducers({
     routing: routerReducer,
     project: ProjectReducer,
     task: TaskReducer,
+    ui: UiReducer,
 });

@@ -61,7 +61,7 @@
         "jquery-localize": "0.1.0",
         "jquery-sparkline": "2.4.0",
         "jquery-steps": "1.1.0",
-        "jquery-validation": "1.15.1",
+        "jquery-validation": "1.18.0",
         "jquery.browser": "0.1.0",
         "jquery.flot.tooltip": "github:krzysu/flot.tooltip",
         "loaders.css": "0.1.2",

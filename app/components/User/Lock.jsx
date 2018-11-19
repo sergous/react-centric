@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router'
 
 import LockRun from './Lock.run';
+import { LOGIN_PATH } from '../../constants/routes';
 
 class Lock extends React.Component {
 
@@ -32,7 +33,7 @@ class Lock extends React.Component {
                                     <div className="mda-form-control-line"></div>
                                     <label>Password</label>
                                 </div>
-                                <Link to="login" className="mda-form-msg right">Not you?</Link>
+                                <Link to={LOGIN_PATH} className="mda-form-msg right">Not you?</Link>
                                 <span className="mda-input-group-addon">
                                     <em className="ion-ios-locked-outline icon-lg"></em>
                                 </span>

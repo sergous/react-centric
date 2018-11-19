@@ -1,5 +1,6 @@
 import * as TYPES from '../actiontypes/project';
-import { LOCATION_CHANGE } from 'react-router-redux'
+import { locationChange } from './ui';
+import { PROJECTS_PATH } from '../constants/routes';
 
 export const createProject = project => {
     return {
@@ -59,18 +60,7 @@ export const openProject = (project) => {
     }
 }
 
-export const openProjects = () => {
-    return {
-        type: LOCATION_CHANGE,
-        payload: {
-            action: 'PUSH',
-            pathname: '/pages/projects',
-            query: {},
-            hash: '',
-            search: '',
-        },
-    }
-}
+export const openProjects = () => dispatch => dispatch(locationChange({pathname: PROJECTS_PATH}))
 
 export const changeProject = (field, payload) => {
     return {

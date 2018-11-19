@@ -41,6 +41,7 @@ import Maps from './components/Maps/Maps';
 import Pages from './components/Pages/Pages';
 
 import Utils from './components/Utils/Utils';
+import { DASHBOARD_PATH, LOGIN_PATH, REGISTER_PATH, RECOVER_PATH, LOCK_PATH } from './constants/routes';
 
 Translate();
 
@@ -68,7 +69,7 @@ ReactDOM.render(
                 {/* Default route*/}
                 <IndexRoute component={Dashboard} />
 
-                <Route path="dashboard" component={Dashboard} />
+                <Route path={DASHBOARD_PATH} component={Dashboard} />
                 <Route path="cards" component={Cards} />
 
                 <Route path="charts">
@@ -149,10 +150,10 @@ ReactDOM.render(
 
             {/* User Pages */}
             <Route path="/" component={User.Layout}>
-                <Route path="login" component={User.Login}/>
-                <Route path="signup" component={User.Signup}/>
-                <Route path="recover" component={User.Recover}/>
-                <Route path="lock" component={User.Lock}/>
+                <Route path={LOGIN_PATH} component={User.Login}/>
+                <Route path={REGISTER_PATH} component={User.Signup}/>
+                <Route path={RECOVER_PATH} component={User.Recover}/>
+                <Route path={LOCK_PATH} component={User.Lock}/>
             </Route>
 
         </Router>
