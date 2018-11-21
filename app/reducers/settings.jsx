@@ -9,7 +9,7 @@ const initialState = {
     headerMenulink: MENU_LINK_CLASS_NAMES.SLIDE,
 }
 
-export default function Settings(state = initialState, action) {
+export default (state = initialState, action) => {
     switch(action.type) {
         case TYPES.FORM.CHANGE:
             if (action.meta.form === 'settings') {

@@ -3,7 +3,7 @@ import { initialState } from '../constants/auth';
 
 const forms = ['login', 'signup', 'recover'];
 
-export default function Auth(state = initialState, action) {
+export default (state = initialState, action) => {
     switch(action.type) {
         case TYPES.FORM.CHANGE:
             if (forms.includes(action.meta.form)) {

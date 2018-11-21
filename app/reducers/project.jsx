@@ -1,7 +1,7 @@
 import * as TYPES from '../actiontypes';
 import { initialState } from '../constants/project';
 
-export default function Project(state = initialState, action) {
+export default (state = initialState, action) => {
     switch(action.type) {
         case TYPES.SEARCH_PROJECT:
             return {

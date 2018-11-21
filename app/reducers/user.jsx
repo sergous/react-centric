@@ -1,7 +1,7 @@
 import * as TYPES from '../actiontypes';
 import { initialState } from '../constants/user';
 
-export default function User(state = initialState, action) {
+export default (state = initialState, action) => {
     switch(action.type) {
         case TYPES.SEARCH_USER:
             return {
