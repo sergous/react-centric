@@ -1,8 +1,7 @@
-import * as TYPES from '../actiontypes/user';
-import * as FORM_TYPES from 'redux-form/lib/actionTypes';
+import * as TYPES from '../actiontypes';
 import { initialState } from '../constants/user';
 
-export default function User(state = initialState, action) {
+export default (state = initialState, action) => {
     switch(action.type) {
         case TYPES.SEARCH_USER:
             return {
@@ -40,7 +39,7 @@ export default function User(state = initialState, action) {
                 ...state,
                 editingProp
             };
-        case FORM_TYPES.CHANGE:
+        case TYPES.FORM.CHANGE:
             if (action.meta.form === 'users') {
                 const searchQuery = action.meta.field === 'query' ? action.payload : null;
                 return {

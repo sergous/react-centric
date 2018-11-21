@@ -1,7 +1,7 @@
-import * as TYPES from '../actiontypes/profile';
+import * as TYPES from '../actiontypes';
 import { initialState } from '../constants/profile';
 
-export default function User(state = initialState, action) {
+export default (state = initialState, action) => {
     switch(action.type) {
         case TYPES.EDIT_PROFILE:
             return {

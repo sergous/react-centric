@@ -1,4 +1,4 @@
-import * as TYPES from '../actiontypes/user';
+import * as TYPES from '../actiontypes';
 import { locationChange } from './ui';
 import { CONTACTS_PATH } from '../constants/routes';
 
@@ -79,7 +79,7 @@ export const removeUser = id => {
 
 export const searchUser = payload => {
     return {
-        type: TYPES.REMOVE_USER,
+        type: TYPES.SEARCH_USER,
         payload
     }
 }

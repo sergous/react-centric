@@ -1,4 +1,4 @@
-import * as TYPES from '../actiontypes/project';
+import * as TYPES from '../actiontypes';
 import { locationChange } from './ui';
 import { PROJECTS_PATH } from '../constants/routes';
 
@@ -79,7 +79,7 @@ export const removeProject = id => {
 
 export const searchProject = payload => {
     return {
-        type: TYPES.REMOVE_PROJECT,
+        type: TYPES.SEARCH_PROJECT,
         payload
     }
 }

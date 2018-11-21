@@ -1,5 +1,5 @@
 import {GENDER} from '../../constants/profile';
-import * as TYPES from '../../actiontypes/profile';
+import * as TYPES from '../../actiontypes';
 
 function initProfile(actions) {
 

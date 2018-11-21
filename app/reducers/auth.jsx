@@ -1,12 +1,11 @@
-import * as types from '../actiontypes/auth';
-import * as FORM_TYPES from 'redux-form/lib/actionTypes';
+import * as TYPES from '../actiontypes';
 import { initialState } from '../constants/auth';
 
 const forms = ['login', 'signup', 'recover'];
 
-export default function Auth(state = initialState, action) {
+export default (state = initialState, action) => {
     switch(action.type) {
-        case FORM_TYPES.CHANGE:
+        case TYPES.FORM.CHANGE:
             if (forms.includes(action.meta.form)) {
                 const email = action.meta.field === 'accountName'
                     ? action.payload
@@ -21,19 +20,19 @@ export default function Auth(state = initialState, action) {
                 }
             }
             return state;
-        case types.REGISTER:
+        case TYPES.REGISTER:
             return {
                 ...state,
                 email: action.email,
                 password: action.password
             }
-        case types.LOGIN:
+        case TYPES.LOGIN:
             return {
                 ...state,
                 email: action.email,
                 password: action.password
             }
-        case types.RECOVER:
+        case TYPES.RECOVER:
             return {
                 ...state,
                 email: action.email

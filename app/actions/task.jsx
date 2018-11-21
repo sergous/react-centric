@@ -1,4 +1,4 @@
-import * as TYPES from '../actiontypes/task'
+import * as TYPES from '../actiontypes'
 import { locationChange } from './ui';
 import { TASKS_PATH } from '../constants/routes';
 
@@ -79,7 +79,7 @@ export const removeTask = id => {
 
 export const searchTask = payload => {
     return {
-        type: TYPES.REMOVE_TASK,
+        type: TYPES.SEARCH_TASK,
         payload,
     }
 }

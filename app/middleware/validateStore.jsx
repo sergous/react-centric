@@ -1,4 +1,4 @@
-import { REHYDRATE } from 'redux-persist/lib/constants';
+import {REHYDRATE} from '../actiontypes';
 
 export const validateStoreMiddleware = store => next => action => {
     switch(action.type) {

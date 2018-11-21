@@ -1,4 +1,4 @@
-import * as TYPES from '../../actiontypes/settings';
+import * as TYPES from '../../actiontypes';
 
 function initSettings() {
     var body = $('body');
