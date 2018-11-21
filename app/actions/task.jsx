@@ -1,4 +1,4 @@
-import * as TYPES from '../actiontypes/task'
+import * as TYPES from '../actiontypes'
 import { locationChange } from './ui';
 import { TASKS_PATH } from '../constants/routes';
 

@@ -1,4 +1,4 @@
-import * as TYPES from '../actiontypes/profile';
+import * as TYPES from '../actiontypes';
 import { initialState } from '../constants/profile';
 
 export default (state = initialState, action) => {

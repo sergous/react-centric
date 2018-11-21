@@ -1,4 +1,4 @@
-import * as TYPES from '../actiontypes/profile';
+import * as TYPES from '../actiontypes';
 
 export const updateProfile = payload => {
     return {

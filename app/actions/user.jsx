@@ -1,4 +1,4 @@
-import * as TYPES from '../actiontypes/user';
+import * as TYPES from '../actiontypes';
 import { locationChange } from './ui';
 import { CONTACTS_PATH } from '../constants/routes';
 

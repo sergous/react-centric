@@ -1,4 +1,4 @@
-import * as TYPES from '../actiontypes/settings';
+import * as TYPES from '../actiontypes';
 
 // Themes for body.className
 export const THEMES_CLASS_NAMES = [

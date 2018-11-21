@@ -1,5 +1,5 @@
 import moment from 'moment';
-import * as TYPES from '../actiontypes/profile';
+import * as TYPES from '../actiontypes';
 
 export const GENDER = {
     MALE: 'gender/MALE',

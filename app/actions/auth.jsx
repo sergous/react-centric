@@ -1,8 +1,8 @@
-import * as types from '../actiontypes/auth';
+import * as TYPES from '../actiontypes';
 
 export function signup(email, password) {
     return {
-        type: types.REGISTER,
+        type: TYPES.REGISTER,
         email,
         password
     }
@@ -10,7 +10,7 @@ export function signup(email, password) {
 
 export function login(email, password) {
     return {
-        type: types.LOGIN,
+        type: TYPES.LOGIN,
         email,
         password
     }
@@ -18,7 +18,7 @@ export function login(email, password) {
 
 export function recover(email) {
     return {
-        type: types.RECOVER,
+        type: TYPES.RECOVER,
         email
     }
 }
