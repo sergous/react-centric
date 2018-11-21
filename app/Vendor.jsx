@@ -116,7 +116,7 @@
     // Nestable
     import '../node_modules/nestable/jquery.nestable.js';
     // Sweet Alert (global access for other scripts)
-    window.swal = require('../node_modules/sweetalert/dist/sweetalert.min.js');
+    window.swal = require('sweetalert');
     // Images Loaded
     import '../node_modules/imagesloaded/imagesloaded.pkgd.js';
     // jQuery Localize
