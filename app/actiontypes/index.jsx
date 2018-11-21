@@ -1,7 +1,6 @@
-export { REHYDRATE } from 'redux-persist/lib/constants';
+export { REHYDRATE } from 'redux-persist/lib/constants'
 export { LOCATION_CHANGE } from 'react-router-redux'
-import { actionTypes as FORM } from 'redux-form/lib/actionTypes';
-export { FORM };
+export { default as FORM } from './form'
 export * from './auth'
 export * from './profile'
 export * from './project'
