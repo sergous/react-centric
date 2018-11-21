@@ -79,7 +79,7 @@ export const removeTask = id => {
 
 export const searchTask = payload => {
     return {
-        type: TYPES.REMOVE_TASK,
+        type: TYPES.SEARCH_TASK,
         payload,
     }
 }

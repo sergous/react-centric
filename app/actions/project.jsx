@@ -79,7 +79,7 @@ export const removeProject = id => {
 
 export const searchProject = payload => {
     return {
-        type: TYPES.REMOVE_PROJECT,
+        type: TYPES.SEARCH_PROJECT,
         payload
     }
 }
