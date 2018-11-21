@@ -1,5 +1,4 @@
-import * as TYPES from '../actiontypes/project';
-import * as FORM_TYPES from 'redux-form/lib/actionTypes';
+import * as TYPES from '../actiontypes';
 import { initialState } from '../constants/project';
 
 export default function Project(state = initialState, action) {
@@ -39,7 +38,7 @@ export default function Project(state = initialState, action) {
                 ...state,
                 editingProject: {...state.editingProject, [action.field]: action.payload}
             };
-        case FORM_TYPES.CHANGE:
+        case TYPES.FORM.CHANGE:
             if (action.meta.form === 'projects') {
                 const searchQuery = action.meta.field === 'searchQuery' ? action.payload : null;
                 const filteredStatus = action.meta.field === 'filteredStatus' ? action.payload : null;

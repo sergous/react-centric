@@ -1,5 +1,4 @@
-import * as TYPES from '../actiontypes/task'
-import { actionTypes as FORM_TYPES } from 'redux-form'
+import * as TYPES from '../actiontypes'
 import { initialState } from '../constants/task'
 
 export default (state = initialState, action) => {
@@ -31,7 +30,7 @@ export default (state = initialState, action) => {
                     [action.field]: action.payload,
                 },
             }
-        case FORM_TYPES.CHANGE:
+        case TYPES.FORM.CHANGE:
             if (action.meta.form !== 'task') return state
 
             if (state.editingTask) {

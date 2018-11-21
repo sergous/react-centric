@@ -1,5 +1,4 @@
-import * as FORM_TYPES from 'redux-form/lib/actionTypes';
-import { REHYDRATE } from 'redux-persist/lib/constants';
+import * as TYPES from '../actiontypes';
 import {THEMES_CLASS_NAMES, MENU_LINK_CLASS_NAMES} from '../constants/settings';
 
 const initialState = {
@@ -12,7 +11,7 @@ const initialState = {
 
 export default function Settings(state = initialState, action) {
     switch(action.type) {
-        case FORM_TYPES.CHANGE:
+        case TYPES.FORM.CHANGE:
             if (action.meta.form === 'settings') {
                 return {
                     ...state,
@@ -20,7 +19,7 @@ export default function Settings(state = initialState, action) {
                 }
             }
             return state;
-        case REHYDRATE:
+        case TYPES.REHYDRATE:
             return {
                 ...state,
                 ...action.payload.settings
